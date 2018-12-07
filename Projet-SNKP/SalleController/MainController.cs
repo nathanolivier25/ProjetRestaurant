@@ -17,9 +17,9 @@ namespace SalleController
 
         public void launchGUI()
         {
-            /*GUI.SnkpGUI window = new GUI.SnkpGUI(1);
+            GUI.SnkpGUI window = new GUI.SnkpGUI(1);
 
-            window.run();*/
+            window.run();
         }
 
         public void BDDConnection()

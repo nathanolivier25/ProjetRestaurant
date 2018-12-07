@@ -12,7 +12,6 @@ namespace BDDTest
         private string db_user = "SÉBASTIEN";
         private string db_name = "Test";
 
-
         [TestMethod]
         public void testOpen()
         {

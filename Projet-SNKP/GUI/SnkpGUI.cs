@@ -9,7 +9,7 @@ using SFML.System;
 namespace GUI
 {
 
-    class SnkpGUI
+    public class SnkpGUI
     {
 
         private int restaurant;

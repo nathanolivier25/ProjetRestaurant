@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cuisine
+namespace CuisineController
 {
     static class Program
     {

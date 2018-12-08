@@ -8,9 +8,6 @@ namespace SalleController
 {
     public abstract class IStrategyClerk
     {
-
-            public abstract void RoleStrategy();
-        
-
+            public abstract void RoleStrategy();        
     }
 }

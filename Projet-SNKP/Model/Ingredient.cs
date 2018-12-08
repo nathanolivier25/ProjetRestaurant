@@ -14,7 +14,7 @@ namespace ModelConsole
         public Ingredient()
         {
             nameIngredient = null;
-            decayDuration =
+            //decayDuration =
 
         }
 

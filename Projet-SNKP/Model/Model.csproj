@@ -71,5 +71,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
+      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
+      <Name>CuisineController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalleController\SalleController.csproj">
+      <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>
+      <Name>SalleController</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

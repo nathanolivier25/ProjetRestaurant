@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SalleController;
 
-namespace ModelConsole
+namespace Model
 {
     public class Butler : People
     {

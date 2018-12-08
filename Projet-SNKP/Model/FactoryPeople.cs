@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cuisine;
+using CuisineController;
 using SalleController;
 
 
-namespace ModelConsole
+namespace Model
 {
     public class FactoryPeople
     {
-
         public enum paramStaff
         {
             HeadWaiter,
@@ -45,40 +44,40 @@ namespace ModelConsole
 
                     break;
 
-                  case paramStaff.PasteryCooker:
-                      return new PasteryCooker(new StrategyPasteryCooker(), new StrategyCooker());
+                case paramStaff.PasteryCooker:
+                    return new PasteryCooker(new StrategyPasteryCooker(), new StrategyCooker());
 
-                      break;
+                    break;
 
-                  case paramStaff.KitchenClerk:
-                      return new KitchenClerk(new StrategyKitchenClerk());
+                case paramStaff.KitchenClerk:
+                    return new KitchenClerk(new StrategyKitchenClerk());
 
-                      break;
+                    break;
 
-                  case paramStaff.Dishwasher:
-                      return new Dishwasher(new StrategyDishwasher());
+                case paramStaff.Dishwasher:
+                    return new Dishwasher(new StrategyDishwasher());
 
-                      break;
+                    break;
 
-                  case paramStaff.Clerk:
-                      return new Clerk(new StrategyClerk());
+                case paramStaff.Clerk:
+                    return new Clerk(new StrategyClerk());
 
-                      break;
+                    break;
 
-                  case paramStaff.Waiter:
-                      return new Waiter(new StrategyWaiter());
+                case paramStaff.Waiter:
+                    return new Waiter(new StrategyWaiter());
 
-                      break;
+                    break;
 
-                  case paramStaff.Butler:
-                      return new Butler(new StrategyButler());
+                case paramStaff.Butler:
+                    return new Butler(new StrategyButler());
 
-                      break;
+                    break;
 
-                  case paramStaff.ClientGroup:
-                      return new ClientGroup(new StrategyClientGroup());
+                case paramStaff.ClientGroup:
+                    return new ClientGroup(new StrategyClientGroup());
 
-                      break;
+                    break;
                 default:
                     return null;
 

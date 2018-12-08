@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cuisine;
+using CuisineController;
 
 
-namespace ModelConsole
+namespace Model
 {
   public class Chef : People
     {

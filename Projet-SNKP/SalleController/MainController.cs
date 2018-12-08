@@ -13,6 +13,7 @@ namespace SalleController
         {
             this.launchGUI();
             this.BDDConnection();
+            
         }
 
         public void launchGUI()

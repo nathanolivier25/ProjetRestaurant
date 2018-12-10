@@ -14,6 +14,7 @@ namespace BDD
         private SqlConnection connection = null;
         private SqlCommand command = null;
         private SqlDataReader data = null;
+        private Queries queries = null;
         private List<List<string>> data_list = null;
         private bool has_data = false;
 
@@ -24,6 +25,8 @@ namespace BDD
                 "Data Source = " + data_source +
                 "; Initial Catalog = " + database + "; Integrated Security = True";
             this.open();
+
+            this.queries = new Queries();
         }
 
         public void open()
@@ -132,9 +135,15 @@ namespace BDD
             get { return this.data; }
         }
 
+        // Return true if the query has return a dataset
         public Boolean hasData()
         {
             return this.has_data;
+        }
+
+        public Queries Queries
+        {
+            get { return this.queries; }
         }
     }
 }

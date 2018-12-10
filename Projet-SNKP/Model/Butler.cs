@@ -10,7 +10,6 @@ namespace Model
 {
     public class Butler : People
     {
-
         IStrategyButler strategy;
         private BDDConnection bdd_connection = null;
 

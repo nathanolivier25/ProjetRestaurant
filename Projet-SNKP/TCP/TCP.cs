@@ -37,7 +37,8 @@ namespace TCP
 
             waitForConnect();
 
-            thread = new Thread(threadMain);
+            thread = new Thread(new ThreadStart(threadMain));
+            thread.Start();
         }
 
         private void threadMain()
@@ -85,7 +86,6 @@ namespace TCP
             }
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         private String receiveData()
         {
             Byte[] bytes = new Byte[256];

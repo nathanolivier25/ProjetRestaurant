@@ -34,12 +34,13 @@ namespace TCP
             client = null;
             ns = null;
 
+            waitForConnect();
+
             thread = new Thread(threadMain);
         }
 
         private void threadMain()
         {
-            waitForConnect();
             while (thread.IsAlive)
             {
                 inputBuffer = receiveData();

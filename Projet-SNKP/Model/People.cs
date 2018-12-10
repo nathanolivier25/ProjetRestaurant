@@ -29,8 +29,8 @@ namespace Model
 
         public Thread Thread
         {
-            get => this.thread;
-            set => this.thread = value;
+            get { return this.thread; }
+            set { this.thread = value; }
         }
     }
 }

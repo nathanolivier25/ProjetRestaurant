@@ -13,13 +13,19 @@ namespace TCP
 
             TCP test = new TCP(TCP.Mode.Client, "10.144.50.1");
             Console.WriteLine("test");
-            test.waitForConnect();
-            test.sendData("Bonjour depuis le serveur");
+
+            test.write("Bonjour je suis le client");
+            test.write("Bonjour de nouveau");
 
             while (true)
             {
-                test.receiveData();
+                String input = test.read();
+                if(input.Length >= 2)
+                {
+                    Console.WriteLine(input);
+                }
             }
+
 
         }
     }

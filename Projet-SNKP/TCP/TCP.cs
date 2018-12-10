@@ -33,6 +33,7 @@ namespace TCP
             mode = local;
             client = null;
             ns = null;
+            inputBuffer = "";
 
             waitForConnect();
 

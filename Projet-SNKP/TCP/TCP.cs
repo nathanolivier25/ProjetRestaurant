@@ -120,7 +120,7 @@ namespace TCP
                 }
             }
 
-            return "fapoz";
+            return toreturn;
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

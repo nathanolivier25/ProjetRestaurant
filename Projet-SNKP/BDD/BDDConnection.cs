@@ -14,7 +14,7 @@ namespace BDD
         private SqlConnection connection = null;
         private SqlCommand command = null;
         private SqlDataReader data = null;
-        private Queries queries = null;
+        private RestaurantQueries queries = null;
         private List<List<string>> data_list = null;
         private bool has_data = false;
 
@@ -26,7 +26,7 @@ namespace BDD
                 "; Initial Catalog = " + database + "; Integrated Security = True";
             this.open();
 
-            this.queries = new Queries();
+            this.queries = new RestaurantQueries();
         }
 
         public void open()
@@ -141,7 +141,7 @@ namespace BDD
             return this.has_data;
         }
 
-        public Queries Queries
+        public RestaurantQueries Queries
         {
             get { return this.queries; }
         }

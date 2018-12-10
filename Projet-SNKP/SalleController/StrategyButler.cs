@@ -24,12 +24,33 @@ namespace SalleController
         public override void RoleStrategy()
         {
             this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNewGroupClient());
-            if (this.bdd_connection.hasData())
+            if (this.bdd_connection.hasData()) // Wait for a new group of client
             {
-                Console.WriteLine("New group");
+                // Get the ID from the clients group
                 int id_group = this.bdd_connection.Data.GetInt32(0);
+
+                // Set the group state to 1
                 this.bdd_connection.executeNonQuery(
                     this.bdd_connection.Queries.setGroupStateToWelcomed(id_group));
+
+                // Get the number of client from the group
+                this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNbClientInGroup(id_group));
+                int nb_clients = this.bdd_connection.Data.GetInt32(0);
+
+                // Get the table ID for the group
+                this.bdd_connection.executeQuery(this.bdd_connection.Queries.getFreeTable(nb_clients));
+
+                if (!this.bdd_connection.hasData())
+                {
+                    Console.WriteLine("Pas de table");
+                    return;
+                }
+                int id_table = this.bdd_connection.Data.GetInt32(0);
+
+                // Set the table state to occupied
+                this.bdd_connection.executeNonQuery(this.bdd_connection.Queries.setTableOccupied(id_table));
+
+                Console.WriteLine(id_table);
             }
         }
     }

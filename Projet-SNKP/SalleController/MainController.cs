@@ -12,8 +12,13 @@ namespace SalleController
         public MainController()
         {
             this.launchGUI();
-            this.BDDConnection();
-            
+            this.openBDDConnection();
+        }
+
+        public void openBDDConnection()
+        {
+            BDDConnection bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            bdd_connection.close();
         }
 
         public void launchGUI()
@@ -21,12 +26,6 @@ namespace SalleController
             GUI.SnkpGUI window = new GUI.SnkpGUI(1);
 
             window.run();
-        }
-
-        public void BDDConnection()
-        {
-            BDDConnection bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
-            bdd_connection.close();
         }
     }
 }

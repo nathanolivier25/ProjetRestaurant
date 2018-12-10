@@ -15,12 +15,13 @@ namespace BDD
         private SqlCommand command = null;
         private SqlDataReader data = null;
         private List<List<string>> data_list = null;
+        private bool has_data = false;
 
         public BDDConnection(string data_source, string database)
         {
             // Initialize the BDD connection string
             this.connection_string =
-                "Data Source = " + data_source + 
+                "Data Source = " + data_source +
                 "; Initial Catalog = " + database + "; Integrated Security = True";
             this.open();
         }
@@ -70,6 +71,7 @@ namespace BDD
         public void executeNonQuery(string query)
         {
             this.prepareCommand(query);
+            this.closeDataReader();
             this.command.ExecuteNonQuery();
         }
 
@@ -79,6 +81,17 @@ namespace BDD
             this.prepareCommand(query);
             this.closeDataReader();
             this.data = this.command.ExecuteReader();
+
+            try
+            {
+                this.data.Read();
+                this.data.GetValue(0);
+                this.has_data = true;
+            }
+            catch (InvalidOperationException)
+            {
+                this.has_data = false;
+            }
             //this.toStringList();
         }
 
@@ -98,7 +111,7 @@ namespace BDD
             while (this.data.Read())
             {
                 List<string> row_list = new List<string>();
-                for(int i = 0; i < this.data.FieldCount; i++)
+                for (int i = 0; i < this.data.FieldCount; i++)
                 {
                     row_list.Add(this.data[i].ToString());
                 }
@@ -117,6 +130,11 @@ namespace BDD
         public SqlDataReader Data
         {
             get { return this.data; }
+        }
+
+        public Boolean hasData()
+        {
+            return this.has_data;
         }
     }
 }

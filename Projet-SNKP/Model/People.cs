@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Model
 {
@@ -12,6 +12,7 @@ namespace Model
         private string role;
         private string state;
         private Restaurant restaurantReference;
+        private Thread thread = null;
 
         public People()
         {
@@ -19,8 +20,6 @@ namespace Model
             role = null;
             state = null;
             restaurantReference = new Restaurant();
-
-
         }
 
         public virtual void RoleStrategy()
@@ -28,9 +27,10 @@ namespace Model
 
         }
 
-
-
-
-
+        public Thread Thread
+        {
+            get => this.thread;
+            set => this.thread = value;
+        }
     }
 }

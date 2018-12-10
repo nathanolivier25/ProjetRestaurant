@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8805AA1A-087D-411B-80A8-A5E5F0BC77A8}</ProjectGuid>
+    <ProjectGuid>{630101D9-B4ED-4A90-A481-2564D94D5C7C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>LauncherConsole</RootNamespace>
+    <AssemblyName>LauncherConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,30 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Butler.cs" />
-    <Compile Include="Chef.cs" />
-    <Compile Include="Clerk.cs" />
-    <Compile Include="ClientGroup.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="Cooker.cs" />
-    <Compile Include="Dishwasher.cs" />
-    <Compile Include="FactoryPeople.cs" />
-    <Compile Include="Headwaiter.cs" />
-    <Compile Include="Ingredient.cs" />
-    <Compile Include="KitchenClerk.cs" />
-    <Compile Include="KitchenStock.cs" />
-    <Compile Include="Meal.cs" />
-    <Compile Include="PasteryCooker.cs" />
-    <Compile Include="People.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipe.cs" />
-    <Compile Include="Restaurant.cs" />
-    <Compile Include="Table.cs" />
-    <Compile Include="Task.cs" />
-    <Compile Include="Tool.cs" />
-    <Compile Include="ToolStock.cs" />
-    <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,9 +55,13 @@
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
-      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
-      <Name>CuisineController</Name>
+    <ProjectReference Include="..\GUI\GUI.csproj">
+      <Project>{28c3a3d7-74ae-498a-b5a0-5a8aa651c711}</Project>
+      <Name>GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\SalleController\SalleController.csproj">
       <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>

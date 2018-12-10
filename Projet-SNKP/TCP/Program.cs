@@ -11,7 +11,7 @@ namespace TCP
         static void Main(string[] args)
         {
 
-            TCP test = new TCP(TCP.Mode.Client, "10.144.50.1");
+            TCP test = new TCP(TCP.Mode.Serveur, "127.0.0.1");
             Console.WriteLine("test");
             test.waitForConnect();
             test.sendData("Bonjour depuis le serveur");

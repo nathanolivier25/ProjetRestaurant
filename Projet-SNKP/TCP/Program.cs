@@ -14,7 +14,7 @@ namespace TCP
             TCP test = new TCP(TCP.Mode.Serveur, "127.0.0.1");
             Console.WriteLine("test");
 
-            test.write("Bonjour je suis le client");
+            test.write("Bonjour je suis le serveur");
             test.write("Bonjour de nouveau");
 
             while (true)

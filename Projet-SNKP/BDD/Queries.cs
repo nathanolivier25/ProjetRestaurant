@@ -18,12 +18,13 @@ namespace BDD
 
         public string getNewGroupClient()
         {
-            return "SELECT * FROM GroupClient WHERE Etat = 0;";
+            return "SELECT * FROM " + table_group_client + " WHERE Etat = 0;";
         }
 
         public string setGroupStateToWelcomed(int id_group)
         {
-            return "UPDATE GroupClient SET Etat = 1 WHERE ID = " + id_group.ToString() + ";";
+            return "UPDATE " + table_table_restaurant + " SET Etat = 1 WHERE ID = " + 
+                id_group.ToString() + ";";
         }
     }
 }

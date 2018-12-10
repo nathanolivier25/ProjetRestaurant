@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TCP
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            TCP test = new TCP(TCP.Mode.Serveur, "127.0.0.1");
+
+            test.sendData("Bonjour depuis le serveur");
+
+            while (true)
+            {
+                test.receiveData();
+            }
+
+        }
+    }
+}

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Item
+    public class TransferableItemDecorator
     {
         int id;
 
-        public Item(int _id)
+        public TransferableItemDecorator(int _id)
         {
             id = _id;
         }

@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    /*public class Tool : Item
+    public class Tool : TransferableItemDecorator
     {
+        public Tool(int id) : base(id)
+        {
 
-    }*/
+        }
+
+
+    }
 }

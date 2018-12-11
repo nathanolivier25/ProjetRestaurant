@@ -54,15 +54,14 @@
     <Compile Include="FactoryPeople.cs" />
     <Compile Include="Headwaiter.cs" />
     <Compile Include="Ingredient.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="TransferableItemDecorator.cs" />
     <Compile Include="KitchenClerk.cs" />
     <Compile Include="KitchenStock.cs" />
-    <Compile Include="Meal.cs" />
+    <Compile Include="Preparation.cs" />
     <Compile Include="PasteryCooker.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipe.cs" />
     <Compile Include="Restaurant.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Task.cs" />

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using SalleController;
 
+
 namespace Model
 {
     public class Butler : People

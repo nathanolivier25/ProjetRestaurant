@@ -11,11 +11,11 @@ namespace TCP
         static void Main(string[] args)
         {
 
-            TCP test = new TCP(TCP.Mode.Client, "10.144.50.1");
+            TCP test = new TCP(TCP.Mode.Serveur, "10.144.50.1");
             Console.WriteLine("test");
 
             test.write("Bonjour je suis le serveur");
-            test.write("Bonjour de nouveau");
+            test.write("Travail terminé WoW");
 
             while (true)
             {

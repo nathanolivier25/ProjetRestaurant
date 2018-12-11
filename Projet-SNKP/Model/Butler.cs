@@ -11,7 +11,6 @@ namespace Model
     public class Butler : People
     {
         IStrategyButler strategy;
-        private BDDConnection bdd_connection = null;
 
         public Butler(IStrategyButler givenStrategy)
         {
@@ -22,22 +21,29 @@ namespace Model
         public void ThreadLoop()
         {
             StrategyButler strategy_butler = new StrategyButler();
-            strategy_butler.BDDConnection = this.bdd_connection;
+            strategy_butler.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
-                strategy_butler.RoleStrategy();
+                int id_group = strategy_butler.RoleStrategy();
+                if (id_group != 0) // If a new group come in
+                {
+                    // Creation of a new client group
+                    ClientGroup group_client = (ClientGroup)new FactoryPeople()
+                        .createStaff(FactoryPeople.paramStaff.ClientGroup);
+
+                    // Set the client group ID
+                    group_client.IDGroup = id_group;
+
+                    // Get the number of client in the group
+                    int nb_clients = strategy_butler.getNbClientsInGroup(id_group);
+                    group_client.NbClients = nb_clients;
+
+                    // Choose a table for the group
+                    group_client.IDTable = strategy_butler.chooseTable(nb_clients);
+
+                    group_client.ToString();
+                }
             }
-        }
-
-        /*private int choisirTable(int nb_clients)
-        {
-            this.bdd_connection.executeQuery("SELECT Nb_places FROM TableRestaurant");
-        }*/
-
-        public BDDConnection BDDConnection
-        {
-            get { return this.bdd_connection; }
-            set { this.bdd_connection = value; }
         }
     }
 }

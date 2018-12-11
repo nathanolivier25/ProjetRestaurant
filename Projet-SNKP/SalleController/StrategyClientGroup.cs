@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace SalleController
 {
     public class StrategyClientGroup : IStrategyClientGroup
     {
+        private BDDConnection bdd_connection = null;
+
         public StrategyClientGroup()
         {
 
@@ -16,6 +19,12 @@ namespace SalleController
         public override void RoleStrategy()
         {
 
+        }
+
+        public BDDConnection BDDConnection
+        {
+            get { return this.bdd_connection; }
+            set { this.bdd_connection = value; }
         }
     }
 }

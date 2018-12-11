@@ -9,7 +9,7 @@ namespace Model
     class Command
     {
         private bool statutCommande;
-        public List<Meal> commands;
+        //public List<Meal> commands;
 
 
         public Command()

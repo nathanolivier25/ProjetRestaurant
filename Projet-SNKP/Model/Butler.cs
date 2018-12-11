@@ -42,6 +42,9 @@ namespace Model
                     // Choose a table for the group
                     group_client.IDTable = strategy_butler.chooseTable(nb_clients);
 
+                    // Set the table to the occupied statut
+
+
                     group_client.ToString();
                 }
             }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Meal : Item
+    /*public class Meal : Item
     {
         
-    }
+    }*/
 }

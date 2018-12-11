@@ -67,7 +67,9 @@ namespace SalleController
         public int chooseTable(int nb_clients)
         {
             this.bdd_connection.executeQuery(this.bdd_connection.Queries.getFreeTable(nb_clients));
-            return this.bdd_connection.Data.GetInt32(0);
+            int id_table = this.bdd_connection.Data.GetInt32(0);
+            this.bdd_connection.executeQuery(this.bdd_connection.Queries.setTableOccupied(id_table));
+            return id_table;
         }
     }
 }

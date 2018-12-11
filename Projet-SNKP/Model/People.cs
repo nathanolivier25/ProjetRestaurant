@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Model
         private string state;
         private Restaurant restaurantReference;
         private Thread thread = null;
+        private BDDConnection bdd_connection = null;
 
         public People()
         {
@@ -25,6 +27,12 @@ namespace Model
         public virtual void RoleStrategy()
         {
 
+        }
+
+        public BDDConnection BDDConnection
+        {
+            get { return this.bdd_connection; }
+            set { this.bdd_connection = value; }
         }
 
         public Thread Thread

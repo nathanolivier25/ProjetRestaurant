@@ -11,11 +11,12 @@ using System.Runtime.CompilerServices;
 
 namespace TCP
 {
-    class TCP
+    public class TCP
     {
         public enum Mode { Client = 1, Serveur = 2}
 
         private Thread thread;
+        private bool threadIsRunning;
 
         private String address;
         private int port;
@@ -37,12 +38,14 @@ namespace TCP
 
             waitForConnect();
 
-            thread = new Thread(threadMain);
+            thread = new Thread(new ThreadStart(threadMain));
+            thread.Start();
         }
 
         private void threadMain()
         {
-            while (thread.IsAlive)
+            threadIsRunning = true;
+            while (threadIsRunning)
             {
                 inputBuffer = receiveData();
             }
@@ -85,7 +88,6 @@ namespace TCP
             }
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         private String receiveData()
         {
             Byte[] bytes = new Byte[256];
@@ -133,6 +135,10 @@ namespace TCP
             Console.WriteLine("Sent: {0}", data);
         }
 
-
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void close()
+        {
+            threadIsRunning = false;
+        }
     }
 }

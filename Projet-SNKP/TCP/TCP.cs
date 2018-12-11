@@ -16,6 +16,7 @@ namespace TCP
         public enum Mode { Client = 1, Serveur = 2}
 
         private Thread thread;
+        private bool threadIsRunning;
 
         private String address;
         private int port;
@@ -43,7 +44,8 @@ namespace TCP
 
         private void threadMain()
         {
-            while (thread.IsAlive)
+            threadIsRunning = true;
+            while (threadIsRunning)
             {
                 inputBuffer = receiveData();
             }
@@ -133,6 +135,10 @@ namespace TCP
             Console.WriteLine("Sent: {0}", data);
         }
 
-
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void close()
+        {
+            threadIsRunning = false;
+        }
     }
 }

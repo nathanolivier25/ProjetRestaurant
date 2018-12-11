@@ -8,5 +8,18 @@ namespace Model
 {
     public class Item
     {
+        int id;
+
+        public Item(int _id)
+        {
+            id = _id;
+        }
+
+        public String toString()
+        {
+            return "" + id;
+        }
+
+
     }
 }

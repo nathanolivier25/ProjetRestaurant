@@ -8,45 +8,37 @@ using System.Threading.Tasks;
 
 namespace Launcher
 {
-    class CuisineLauncher
+    class RestaurantLauncher
     {
         private BDDConnection bdd_connection = null;
 
-        public CuisineLauncher()
+        public RestaurantLauncher()
         {
-            //this.launchGUI();
+            /*
+            GUI.SnkpGUI window = new GUI.SnkpGUI(1);
+            window.run();
+            */
+
             this.openBDDConnection();
 
             this.startPeople();
 
-            //this.closeBDDConnection();
         }
 
         public void openBDDConnection()
         {
             this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
-            //bdd_connection.close();
         }
 
-        public void launchGUI()
-        {
-            GUI.SnkpGUI window = new GUI.SnkpGUI(1);
-
-            window.run();
-        }
 
         public void startPeople()
         {
-            // Create de people factory
-            FactoryPeople factory_people = new FactoryPeople();
-
             // Instanciate the butler
-            Butler butler = (Butler)factory_people.createStaff(FactoryPeople.paramStaff.Butler, 
-                this.bdd_connection);
-            butler.BDDConnection = this.bdd_connection;
-            butler.Thread.Start();
+            Butler butler = new Butler(new SalleController.StrategyButler(this.bdd_connection), this.bdd_connection);
 
             // Instanciate chef
+
+            // ...
         }
 
         public void closeBDDConnection()

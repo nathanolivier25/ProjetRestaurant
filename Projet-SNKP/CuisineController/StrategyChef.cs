@@ -20,13 +20,13 @@ namespace CuisineController
 
         public override void RoleStrategy()
         {
-            this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNewGroupClient());
+            this.bdd_connection.executeQuery(RestaurantQueries.getNewGroupClient());
             if (this.bdd_connection.hasData())
             {
                 Console.WriteLine("New group");
                 int id_group = this.bdd_connection.Data.GetInt32(0);
                 this.bdd_connection.executeNonQuery(
-                    this.bdd_connection.Queries.setGroupStateToWelcomed(id_group));
+                    RestaurantQueries.setGroupStateToWelcomed(id_group));
             }
         }
 

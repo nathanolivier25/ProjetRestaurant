@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using SalleController;
+
+using Interface;
 
 
 namespace Model
@@ -16,8 +17,7 @@ namespace Model
         public Butler(IStrategyButler givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
             strategy = givenStrategy;
-            this.Thread = new Thread(new ThreadStart(ThreadLoop));
-            this.BDDConnection = bdd_connection;
+            this.thread = new Thread(new ThreadStart(ThreadLoop));
         }
 
         public void ThreadLoop()
@@ -25,7 +25,9 @@ namespace Model
             //strategy_butler.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
-                int id_group = strategy.RoleStrategy();
+                strategy.RoleStrategy();
+
+                /*
                 if (id_group != 0) // If a new group come in
                 {
                     // Creation of a new client group
@@ -36,17 +38,18 @@ namespace Model
                     group_client.IDGroup = id_group;
 
                     // Get the number of client in the group
-                    int nb_clients = strategy_butler.getNbClientsInGroup(id_group);
+                    int nb_clients = strategy.getNbClientsInGroup(id_group);
                     group_client.NbClients = nb_clients;
 
                     // Choose a table for the group
-                    group_client.IDTable = strategy_butler.chooseTable(nb_clients);
+                    group_client.IDTable = strategy.chooseTable(nb_clients);
 
                     // Set the table to the occupied statut
 
 
                     group_client.ToString();
                 }
+                */
             }
         }
     }

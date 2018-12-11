@@ -9,12 +9,12 @@ namespace Model
 {
     public class People
     {
-        private string name;
-        private string role;
-        private string state;
-        private Restaurant restaurantReference;
-        private Thread thread = null;
-        private BDDConnection bdd_connection = null;
+        protected string name;
+        protected string role;
+        protected string state;
+        protected Restaurant restaurantReference;
+        protected Thread thread = null;
+        protected BDDConnection bdd_connection = null;
 
         public People(BDDConnection bdd_connection)
         {

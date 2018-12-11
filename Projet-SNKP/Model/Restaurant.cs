@@ -8,7 +8,7 @@ namespace Model
 {
     public enum Side { Room, Kitchen}
 
-    class Restaurant
+    public class Restaurant
     {
     }
 }

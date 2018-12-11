@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FactoryPeople.cs" />
-    <Compile Include="CuisineLauncher.cs" />
+    <Compile Include="RestaurantLauncher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Interface;
+
 namespace SalleController
 {
     public class StrategyButler : IStrategyButler
@@ -18,34 +20,30 @@ namespace SalleController
 
         public override int RoleStrategy()
         {
-            this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNewGroupClient());
-            if (this.bdd_connection.hasData()) // Wait for a new group of client
+            List<List<String>> idgroupcheck = this.bdd_connection.executeQuery(RestaurantQueries.getNewGroupClient());
+            if (idgroupcheck.Count > 0) // Wait for a new group of client
             {
                 // Get the ID from the clients group
-                int id_group = this.bdd_connection.Data.GetInt32(0);
+                int id_group = Int32.Parse(idgroupcheck.ElementAt(0).ElementAt(0));
 
                 // Set the group state to 1 (welcomed)
-                this.bdd_connection.executeNonQuery(
-                    this.bdd_connection.Queries.setGroupStateToWelcomed(id_group));
-
-                return id_group;
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToWelcomed(id_group));
 
                 // Get the number of client from the group
-                this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNbClientInGroup(id_group));
-                int nb_clients = this.bdd_connection.Data.GetInt32(0);
+                int nb_clients = Int32.Parse( this.bdd_connection.executeQuery(RestaurantQueries.getNbClientInGroup(id_group)).ElementAt(0).ElementAt(0) );
 
                 // Get the table ID for the group
-                this.bdd_connection.executeQuery(this.bdd_connection.Queries.getFreeTable(nb_clients));
+                List<List<String>> tableidcheck = this.bdd_connection.executeQuery(RestaurantQueries.getFreeTable(nb_clients));
 
-                if (!this.bdd_connection.hasData())
+                if (!(tableidcheck.Count > 0))
                 {
                     Console.WriteLine("Pas de table disponible");
                     return 0;
                 }
-                int id_table = this.bdd_connection.Data.GetInt32(0);
+                int id_table = Int32.Parse(tableidcheck.ElementAt(0).ElementAt(0));
 
                 // Set the table state to occupied
-                this.bdd_connection.executeNonQuery(this.bdd_connection.Queries.setTableOccupied(id_table));
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setTableOccupied(id_table));
 
                 Console.WriteLine(id_table);
             }
@@ -55,15 +53,15 @@ namespace SalleController
         // Returns the number of clients in the group
         public int getNbClientsInGroup(int id_group)
         {
-            this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNbClientInGroup(id_group));
+            this.bdd_connection.executeQuery(RestaurantQueries.getNbClientInGroup(id_group));
             return this.bdd_connection.Data.GetInt32(0);
         }
 
         public int chooseTable(int nb_clients)
         {
-            this.bdd_connection.executeQuery(this.bdd_connection.Queries.getFreeTable(nb_clients));
+            this.bdd_connection.executeQuery(RestaurantQueries.getFreeTable(nb_clients));
             int id_table = this.bdd_connection.Data.GetInt32(0);
-            this.bdd_connection.executeQuery(this.bdd_connection.Queries.setTableOccupied(id_table));
+            this.bdd_connection.executeQuery(RestaurantQueries.setTableOccupied(id_table));
             return id_table;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BDD;
+using GUI;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,17 @@ namespace Launcher
 
         public RestaurantLauncher()
         {
-            /*
-            GUI.SnkpGUI window = new GUI.SnkpGUI(1);
-            window.run();
-            */
+            this.launchGUI();
 
             this.openBDDConnection();
 
             this.startPeople();
+        }
 
+        public void launchGUI()
+        {
+            SnkpGUI window = new SnkpGUI(1);
+            window.run();
         }
 
         public void openBDDConnection()

@@ -17,10 +17,7 @@ namespace LauncherConsole
             //this.launchGUI();
             this.openBDDConnection();
 
-            FactoryPeople factory_people = new FactoryPeople();
-            Butler butler = (Butler)factory_people.createStaff(FactoryPeople.paramStaff.Butler);
-            butler.BDDConnection = this.bdd_connection;
-            butler.Thread.Start();
+            this.startPeople();
 
             //this.closeBDDConnection();
         }
@@ -36,6 +33,19 @@ namespace LauncherConsole
             GUI.SnkpGUI window = new GUI.SnkpGUI(1);
 
             window.run();
+        }
+
+        public void startPeople()
+        {
+            // Create de people factory
+            FactoryPeople factory_people = new FactoryPeople();
+
+            // Instanciate the butler
+            Butler butler = (Butler)factory_people.createStaff(FactoryPeople.paramStaff.Butler);
+            butler.BDDConnection = this.bdd_connection;
+            butler.Thread.Start();
+
+            // Instanciate chef
         }
 
         public void closeBDDConnection()

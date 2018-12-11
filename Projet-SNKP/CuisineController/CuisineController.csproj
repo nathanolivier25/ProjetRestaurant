@@ -46,11 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IStrategyChef.cs" />
-    <Compile Include="IStrategyCooker.cs" />
-    <Compile Include="IStrategyDishwasher.cs" />
-    <Compile Include="IStrategyKitchenClerk.cs" />
-    <Compile Include="IStrategyPasteryCooker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StrategyChef.cs" />
@@ -84,6 +79,18 @@
     <ProjectReference Include="..\BDD\BDD.csproj">
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interface\Interface.csproj">
+      <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
+      <Name>Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCP\TCP.csproj">
+      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
+      <Name>TCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

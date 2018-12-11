@@ -14,8 +14,8 @@ namespace Model
     public class ExchangerDesk
     {
         private TCP.TCP connection;
-        private List<Item> inputBuffer;
-        private List<Item> sendBuffer;
+        private List<TransferableItemDecorator> inputBuffer;
+        private List<TransferableItemDecorator> sendBuffer;
 
         private Side side;
 
@@ -27,7 +27,7 @@ namespace Model
         {
             connection = _connection;
             side = _side;
-            inputBuffer = new List<Item>();
+            inputBuffer = new List<TransferableItemDecorator>();
 
             thread = new Thread(new ThreadStart(threadMain));
             thread.Start();
@@ -46,19 +46,19 @@ namespace Model
                 String str = connection.read();
                 if(str.Length >= 0)
                 {
-                    inputBuffer.Add(new Item(Int32.Parse(str)));
+                    inputBuffer.Add(new TransferableItemDecorator(str));
                 }
             }
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void AddToDesk(Item i)
+        public void AddToDesk(TransferableItemDecorator i)
         {
             sendBuffer.Add(i);
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public List<Item> CheckDesk()
+        public List<TransferableItemDecorator> CheckDesk()
         {
             return inputBuffer;
         }
@@ -70,7 +70,7 @@ namespace Model
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void RemoveFromDesk(Item i)
+        public void RemoveFromDesk(TransferableItemDecorator i)
         {
             inputBuffer.Remove(i);
         }

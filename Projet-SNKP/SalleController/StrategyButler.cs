@@ -16,11 +16,6 @@ namespace SalleController
             this.bdd_connection = bdd_connection;
         }
 
-        public BDDConnection BDDConnection
-        {
-            set { this.bdd_connection = value; }
-        }
-
         public override int RoleStrategy()
         {
             this.bdd_connection.executeQuery(this.bdd_connection.Queries.getNewGroupClient());

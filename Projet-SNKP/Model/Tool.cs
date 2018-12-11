@@ -8,7 +8,7 @@ namespace Model
 {
     public class Tool : TransferableItemDecorator
     {
-        public Tool(int id) : base(id)
+        public Tool(int id) : base(id, TransferableItemDecorator.Type.Tool)
         {
 
         }

@@ -20,11 +20,5 @@ namespace SalleController
         {
 
         }
-
-        public BDDConnection BDDConnection
-        {
-            get { return this.bdd_connection; }
-            set { this.bdd_connection = value; }
-        }
     }
 }

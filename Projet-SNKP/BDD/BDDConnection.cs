@@ -79,7 +79,7 @@ namespace BDD
         }
 
         // Execute a query and store the result in <data>
-        public void executeQuery(string query)
+        public List<List<string>> executeQuery(string query)
         {
             this.prepareCommand(query);
             this.closeDataReader();
@@ -95,7 +95,7 @@ namespace BDD
             {
                 this.has_data = false;
             }
-            //this.toStringList();
+            return this.toStringList();
         }
 
         // Prepare the SQL command with <query> as command text

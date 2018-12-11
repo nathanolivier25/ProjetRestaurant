@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8E41748-91A3-4691-A5BF-9235E3BCB6D2}</ProjectGuid>
+    <ProjectGuid>{88876812-4C9A-462D-A1D3-8745BCFDBDC1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SalleController</RootNamespace>
-    <AssemblyName>SalleController</AssemblyName>
+    <RootNamespace>Interface</RootNamespace>
+    <AssemblyName>Interface</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,34 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IStrategyButler.cs" />
+    <Compile Include="IStrategyChef.cs" />
+    <Compile Include="IStrategyClerk.cs" />
+    <Compile Include="IStrategyClientGroup.cs" />
+    <Compile Include="IStrategyCooker.cs" />
+    <Compile Include="IStrategyDishwasher.cs" />
+    <Compile Include="IStrategyHeadWaiter.cs" />
+    <Compile Include="IStrategyKitchenClerk.cs" />
+    <Compile Include="IStrategyPasteryCooker.cs" />
+    <Compile Include="IStrategyWaiter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StrategyButler.cs" />
-    <Compile Include="StrategyClerk.cs" />
-    <Compile Include="StrategyClientGroup.cs" />
-    <Compile Include="StrategyHeadWaiter.cs" />
-    <Compile Include="StrategyWaiter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BDD\BDD.csproj">
-      <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
-      <Name>BDD</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interface\Interface.csproj">
-      <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
-      <Name>Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TCP\TCP.csproj">
-      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
-      <Name>TCP</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

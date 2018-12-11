@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LauncherConsole
+namespace Launcher
 {
-    class MainController
+    class CuisineLauncher
     {
         private BDDConnection bdd_connection = null;
 
-        public MainController()
+        public CuisineLauncher()
         {
             //this.launchGUI();
             this.openBDDConnection();

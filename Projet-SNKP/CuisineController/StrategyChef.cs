@@ -16,10 +16,6 @@ namespace CuisineController
 
         }
 
-        public BDDConnection BDDConnection
-        {
-            set { this.bdd_connection = value; }
-        }
 
 
         public override void RoleStrategy()

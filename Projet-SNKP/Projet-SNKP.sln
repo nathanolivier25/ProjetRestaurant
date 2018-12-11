@@ -5,27 +5,29 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8805AA1A-087D-411B-80A8-A5E5F0BC77A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTest", "ModelTest\ModelTest.csproj", "{45EA5113-63C5-46B8-8451-4E9D0467F3A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestModel", "ModelTest\TestModel.csproj", "{45EA5113-63C5-46B8-8451-4E9D0467F3A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalleController", "SalleController\SalleController.csproj", "{D8E41748-91A3-4691-A5BF-9235E3BCB6D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalleControllerTest", "SalleControllerTest\SalleControllerTest.csproj", "{79EF360E-FBE7-4F67-9D60-A2932FCBD278}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSalleController", "SalleControllerTest\TestSalleController.csproj", "{79EF360E-FBE7-4F67-9D60-A2932FCBD278}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD", "BDD\BDD.csproj", "{CA3BDF15-6599-45DC-94B5-DCBC13ADC7B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDDTest", "BDDTest\BDDTest.csproj", "{3DCFE51F-39C9-45B1-BD23-79D084F1F6DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBDD", "BDDTest\TestBDD.csproj", "{3DCFE51F-39C9-45B1-BD23-79D084F1F6DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{28C3A3D7-74AE-498A-B5A0-5A8AA651C711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUITest", "GUITest\GUITest.csproj", "{A0BC42AA-025D-45DD-AF40-50334C7216E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGUI", "GUITest\TestGUI.csproj", "{A0BC42AA-025D-45DD-AF40-50334C7216E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuisineController", "CuisineController\CuisineController.csproj", "{F537F485-6068-4560-A00F-DB34094F5EA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuisineControllerTest", "CuisineControllerTest\CuisineControllerTest.csproj", "{601024A3-735E-4280-B259-57CF1E586797}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCuisineController", "CuisineControllerTest\TestCuisineController.csproj", "{601024A3-735E-4280-B259-57CF1E586797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherConsole", "LauncherConsole\LauncherConsole.csproj", "{630101D9-B4ED-4A90-A481-2564D94D5C7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "LauncherConsole\Launcher.csproj", "{630101D9-B4ED-4A90-A481-2564D94D5C7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP", "TCP\TCP.csproj", "{37DEE742-1C69-4B90-9F67-8D77F32DE9B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{88876812-4C9A-462D-A1D3-8745BCFDBDC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +133,14 @@ Global
 		{37DEE742-1C69-4B90-9F67-8D77F32DE9B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{37DEE742-1C69-4B90-9F67-8D77F32DE9B5}.Release|x86.ActiveCfg = Release|Any CPU
 		{37DEE742-1C69-4B90-9F67-8D77F32DE9B5}.Release|x86.Build.0 = Release|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Debug|x86.Build.0 = Debug|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|x86.ActiveCfg = Release|Any CPU
+		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

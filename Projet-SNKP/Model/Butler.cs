@@ -22,11 +22,10 @@ namespace Model
 
         public void ThreadLoop()
         {
-            StrategyButler strategy_butler = new StrategyButler(this.BDDConnection);
             //strategy_butler.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
-                int id_group = strategy_butler.RoleStrategy();
+                int id_group = strategy.RoleStrategy();
                 if (id_group != 0) // If a new group come in
                 {
                     // Creation of a new client group

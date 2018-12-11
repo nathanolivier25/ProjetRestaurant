@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CuisineController
 {
-    public abstract class IStrategyPasteryCooker
+    public abstract class IStrategyPasteryCooker : IStrategyCooker
     {
-        public abstract void RoleStrategy();
+        public override abstract void RoleStrategy();
 
 
     }

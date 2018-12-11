@@ -10,12 +10,11 @@ namespace Model
 {
     public class PasteryCooker: Cooker
     {
-        IStrategyPasteryCooker strategy;
 
-        public PasteryCooker(IStrategyPasteryCooker givenStrategy, IStrategyCooker cooker, BDDConnection bdd_connection) 
-            :base(cooker, bdd_connection)
+        public PasteryCooker(IStrategyPasteryCooker givenStrategy, BDDConnection bdd_connection) 
+            :base(givenStrategy, bdd_connection)
         {
-            strategy = givenStrategy;
+
         }
     }
 }

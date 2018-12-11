@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    public enum Side { Room, Kitchen}
+
     class Restaurant
     {
     }

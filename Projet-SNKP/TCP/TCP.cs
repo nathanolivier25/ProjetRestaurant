@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace TCP
 {
-    class TCP
+    public class TCP
     {
         public enum Mode { Client = 1, Serveur = 2}
 

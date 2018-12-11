@@ -50,9 +50,11 @@
     <Compile Include="Command.cs" />
     <Compile Include="Cooker.cs" />
     <Compile Include="Dishwasher.cs" />
+    <Compile Include="ExchangerDesk.cs" />
     <Compile Include="FactoryPeople.cs" />
     <Compile Include="Headwaiter.cs" />
     <Compile Include="Ingredient.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="KitchenClerk.cs" />
     <Compile Include="KitchenStock.cs" />
     <Compile Include="Meal.cs" />
@@ -65,7 +67,6 @@
     <Compile Include="Table.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Tool.cs" />
-    <Compile Include="ToolStock.cs" />
     <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\SalleController\SalleController.csproj">
       <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>
       <Name>SalleController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCP\TCP.csproj">
+      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
+      <Name>TCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

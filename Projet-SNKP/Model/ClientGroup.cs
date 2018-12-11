@@ -26,12 +26,12 @@ namespace Model
 
         public void ThreadLoop()
         {
-            StrategyClientGroup strategy_client_group = new StrategyClientGroup();
+            /*StrategyClientGroup strategy_client_group = new StrategyClientGroup();
             strategy_client_group.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
                 strategy_client_group.RoleStrategy();
-            }
+            }*/
         }
 
         public int IDGroup

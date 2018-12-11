@@ -8,7 +8,7 @@ namespace ModelTest
     [TestClass]
     public class FactoryPeopleTest
     {
-        // ARRANGE
+        /*// ARRANGE
         FactoryPeople factory_people = new FactoryPeople();
         People people = null;
 
@@ -110,6 +110,6 @@ namespace ModelTest
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.ClientGroup");
-        }
+        }*/
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="IStrategyKitchenClerk.cs" />
     <Compile Include="IStrategyPasteryCooker.cs" />
     <Compile Include="IStrategyWaiter.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

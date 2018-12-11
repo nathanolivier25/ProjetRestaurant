@@ -22,13 +22,13 @@ namespace Model
         }
         public void ThreadLoop()
         {
-            StrategyChef strategy_chef = new StrategyChef();
+            /*StrategyChef strategy_chef = new StrategyChef();
             strategy_chef.BDDConnection = this.bdd_connection;
 
             while (this.Thread.IsAlive)
             {
                 strategy_chef.RoleStrategy();
-            }
+            }*/
         }
 
         public BDDConnection BDDConnection

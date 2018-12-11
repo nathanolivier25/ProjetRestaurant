@@ -41,7 +41,8 @@ namespace LauncherConsole
             FactoryPeople factory_people = new FactoryPeople();
 
             // Instanciate the butler
-            Butler butler = (Butler)factory_people.createStaff(FactoryPeople.paramStaff.Butler);
+            Butler butler = (Butler)factory_people.createStaff(FactoryPeople.paramStaff.Butler, 
+                this.bdd_connection);
             butler.BDDConnection = this.bdd_connection;
             butler.Thread.Start();
 

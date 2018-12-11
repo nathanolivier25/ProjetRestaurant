@@ -11,9 +11,9 @@ namespace SalleController
     {
         private BDDConnection bdd_connection = null;
 
-        public StrategyButler()
+        public StrategyButler(BDDConnection bdd_connection = null)
         {
-            
+            this.bdd_connection = bdd_connection;
         }
 
         public BDDConnection BDDConnection

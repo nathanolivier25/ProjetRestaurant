@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Model
     {
         IStrategyHeadWaiter strategy;
 
-        public HeadWaiter(IStrategyHeadWaiter givenStrategy)
+        public HeadWaiter(IStrategyHeadWaiter givenStrategy, BDDConnection bdd_connection): base(bdd_connection)
         {
             strategy = givenStrategy;
         }

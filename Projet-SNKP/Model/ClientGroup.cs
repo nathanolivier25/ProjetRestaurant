@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Model
         int nb_clients = 0;
         int id_table = 0;
 
-        public ClientGroup(IStrategyClientGroup givenStrategy)
+        public ClientGroup(IStrategyClientGroup givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));

@@ -16,11 +16,12 @@ namespace Model
         private Thread thread = null;
         private BDDConnection bdd_connection = null;
 
-        public People()
+        public People(BDDConnection bdd_connection)
         {
             name = null;
             role = null;
             state = null;
+            this.bdd_connection = bdd_connection;
             restaurantReference = new Restaurant();
         }
 

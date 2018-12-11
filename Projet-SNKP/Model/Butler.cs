@@ -13,16 +13,17 @@ namespace Model
     {
         IStrategyButler strategy;
 
-        public Butler(IStrategyButler givenStrategy)
+        public Butler(IStrategyButler givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
+            this.BDDConnection = bdd_connection;
         }
 
         public void ThreadLoop()
         {
-            StrategyButler strategy_butler = new StrategyButler();
-            strategy_butler.BDDConnection = this.BDDConnection;
+            StrategyButler strategy_butler = new StrategyButler(this.BDDConnection);
+            //strategy_butler.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
                 int id_group = strategy_butler.RoleStrategy();
@@ -30,7 +31,7 @@ namespace Model
                 {
                     // Creation of a new client group
                     ClientGroup group_client = (ClientGroup)new FactoryPeople()
-                        .createStaff(FactoryPeople.paramStaff.ClientGroup);
+                        .createStaff(FactoryPeople.paramStaff.ClientGroup, this.BDDConnection);
 
                     // Set the client group ID
                     group_client.IDGroup = id_group;

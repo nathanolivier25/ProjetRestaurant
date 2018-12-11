@@ -14,7 +14,7 @@ namespace Model
         IStrategyChef strategy;
         private BDDConnection bdd_connection = null;
 
-        public Chef(IStrategyChef givenStrategy)
+        public Chef(IStrategyChef givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));

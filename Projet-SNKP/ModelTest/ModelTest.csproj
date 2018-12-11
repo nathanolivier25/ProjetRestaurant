@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BDD\BDD.csproj">
+      <Project>{CA3BDF15-6599-45DC-94B5-DCBC13ADC7B7}</Project>
+      <Name>BDD</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
       <Name>Model</Name>

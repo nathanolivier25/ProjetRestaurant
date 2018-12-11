@@ -16,7 +16,7 @@ namespace ModelTest
         public void testCreateStaff_HeadWaiter()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.HeadWaiter);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.HeadWaiter, null);
             
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.HeadWaiter");
@@ -26,7 +26,7 @@ namespace ModelTest
         public void testCreateStaff_Chef()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Chef);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Chef, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Chef");
@@ -36,7 +36,7 @@ namespace ModelTest
         public void testCreateStaff_Cooker()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Cooker);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Cooker, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Cooker");
@@ -46,7 +46,7 @@ namespace ModelTest
         public void testCreateStaff_PasteryCooker()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.PasteryCooker);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.PasteryCooker, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.PasteryCooker");
@@ -56,7 +56,7 @@ namespace ModelTest
         public void testCreateStaff_KitchenClerk()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.KitchenClerk);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.KitchenClerk, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.KitchenClerk");
@@ -66,7 +66,7 @@ namespace ModelTest
         public void testCreateStaff_Dishwasher()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Dishwasher);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Dishwasher, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Dishwasher");
@@ -76,7 +76,7 @@ namespace ModelTest
         public void testCreateStaff_Clerk()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Clerk);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Clerk, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Clerk");
@@ -86,7 +86,7 @@ namespace ModelTest
         public void testCreateStaff_Waiter()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Waiter);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Waiter, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Waiter");
@@ -96,7 +96,7 @@ namespace ModelTest
         public void testCreateStaff_Butler()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.Butler);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.Butler, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.Butler");
@@ -106,7 +106,7 @@ namespace ModelTest
         public void testCreateStaff_ClientGroup()
         {
             // ACTION
-            people = factory_people.createStaff(FactoryPeople.paramStaff.ClientGroup);
+            people = factory_people.createStaff(FactoryPeople.paramStaff.ClientGroup, null);
 
             // ASSERT
             Assert.AreEqual(people.GetType().FullName, "Model.ClientGroup");

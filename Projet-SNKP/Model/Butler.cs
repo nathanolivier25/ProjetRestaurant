@@ -18,38 +18,14 @@ namespace Model
         {
             strategy = givenStrategy;
             this.thread = new Thread(new ThreadStart(ThreadLoop));
+            this.Thread.Start();
         }
 
         public void ThreadLoop()
         {
-            //strategy_butler.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
                 strategy.RoleStrategy();
-
-                /*
-                if (id_group != 0) // If a new group come in
-                {
-                    // Creation of a new client group
-                    ClientGroup group_client = (ClientGroup)new FactoryPeople()
-                        .createStaff(FactoryPeople.paramStaff.ClientGroup, this.BDDConnection);
-
-                    // Set the client group ID
-                    group_client.IDGroup = id_group;
-
-                    // Get the number of client in the group
-                    int nb_clients = strategy.getNbClientsInGroup(id_group);
-                    group_client.NbClients = nb_clients;
-
-                    // Choose a table for the group
-                    group_client.IDTable = strategy.chooseTable(nb_clients);
-
-                    // Set the table to the occupied statut
-
-
-                    group_client.ToString();
-                }
-                */
             }
         }
     }

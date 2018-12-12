@@ -1,4 +1,5 @@
 ﻿using BDD;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,18 @@ namespace SalleController
         public override int RoleStrategy()
         {
             List<List<String>> idgroupcheck = this.bdd_connection.executeQuery(RestaurantQueries.getNewGroupClient());
+            
             if (idgroupcheck.Count > 0) // Wait for a new group of client
             {
                 // Get the ID from the clients group
                 int id_group = Int32.Parse(idgroupcheck.ElementAt(0).ElementAt(0));
+                Console.WriteLine("Accueil du groupe " + id_group);
 
                 // Set the group state to 1 (welcomed)
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToWelcomed(id_group));
 
                 // Get the number of client from the group
-                int nb_clients = Int32.Parse( this.bdd_connection.executeQuery(RestaurantQueries.getNbClientInGroup(id_group)).ElementAt(0).ElementAt(0) );
+                int nb_clients = Int32.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getNbClientInGroup(id_group)).ElementAt(0).ElementAt(0));
 
                 // Get the table ID for the group
                 List<List<String>> tableidcheck = this.bdd_connection.executeQuery(RestaurantQueries.getFreeTable(nb_clients));
@@ -45,7 +48,15 @@ namespace SalleController
                 // Set the table state to occupied
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setTableOccupied(id_table));
 
-                Console.WriteLine(id_table);
+                // Set the group table ID
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupTable(id_group, id_table));
+
+                // Instanciate a new client group
+                ClientGroup group_client = new ClientGroup(new StrategyClientGroup(this.bdd_connection), this.bdd_connection);
+                group_client.IDGroup = id_group;
+                group_client.IDTable = id_table;
+                group_client.NbClients = nb_clients;
+                Console.WriteLine("Assignation de la table " + id_table + " au groupe " + id_group);
             }
             return 0;
         }
@@ -57,6 +68,7 @@ namespace SalleController
             return this.bdd_connection.Data.GetInt32(0);
         }
 
+        // Choose a table for the group
         public int chooseTable(int nb_clients)
         {
             this.bdd_connection.executeQuery(RestaurantQueries.getFreeTable(nb_clients));

@@ -22,16 +22,15 @@ namespace Model
         {
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
+            this.Thread.Start();
         }
 
         public void ThreadLoop()
         {
-            /*StrategyClientGroup strategy_client_group = new StrategyClientGroup();
-            strategy_client_group.BDDConnection = this.BDDConnection;
             while (this.Thread.IsAlive)
             {
-                strategy_client_group.RoleStrategy();
-            }*/
+                strategy.RoleStrategy();
+            }
         }
 
         public int IDGroup

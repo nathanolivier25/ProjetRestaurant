@@ -1,6 +1,7 @@
 ﻿using BDD;
 using GUI;
 using Model;
+using SalleController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Launcher
 
         public RestaurantLauncher()
         {
-            this.launchGUI();
+            //this.launchGUI();
 
             this.openBDDConnection();
 
@@ -37,7 +38,11 @@ namespace Launcher
         public void startPeople()
         {
             // Instanciate the butler
-            Butler butler = new Butler(new SalleController.StrategyButler(this.bdd_connection), this.bdd_connection);
+            Butler butler = new Butler(new StrategyButler(this.bdd_connection), this.bdd_connection);
+
+            // Instanciate HeadWaiter
+            HeadWaiter head_waiter_1 = new HeadWaiter(new StrategyHeadWaiter(), this.bdd_connection, 1);
+            HeadWaiter head_waiter_2 = new HeadWaiter(new StrategyHeadWaiter(), this.bdd_connection, 2);
 
             // Instanciate chef
 

@@ -13,14 +13,14 @@ namespace SalleController
     {
         private BDDConnection bdd_connection = null;
 
-        public StrategyClientGroup()
+        public StrategyClientGroup(BDDConnection bdd_connection = null)
         {
-
+            this.bdd_connection = bdd_connection;
         }
 
         public override void RoleStrategy()
         {
-
+            
         }
     }
 }

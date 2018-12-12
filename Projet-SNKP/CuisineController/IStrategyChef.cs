@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interface
+namespace CuisineController
 {
     public abstract class IStrategyChef
     {
        public abstract void RoleStrategy();
-       public abstract IPreparation attributTask();
+        
         
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CuisineController;
 
 namespace Launcher
 {
@@ -15,11 +16,13 @@ namespace Launcher
 
         public RestaurantLauncher()
         {
-            this.launchGUI();
+       //     this.launchGUI();
 
             this.openBDDConnection();
+            this.launchCuisine();
+        //    this.startPeople();
 
-            this.startPeople();
+
         }
 
         public void launchGUI()
@@ -30,7 +33,7 @@ namespace Launcher
 
         public void openBDDConnection()
         {
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("DESKTOP-NHTS5G4", "ProgSystemTest");
         }
 
 
@@ -48,5 +51,13 @@ namespace Launcher
         {
             this.bdd_connection.close();
         }
+
+        public void launchCuisine()
+        {
+            Chef chef = new Chef(new CuisineController.StrategyChef(this.bdd_connection), this.bdd_connection);
+            Cooker cooker = new Cooker(new CuisineController.StrategyCooker(this.bdd_connection, chef), this.bdd_connection);
+        }
+
+
     }
 }

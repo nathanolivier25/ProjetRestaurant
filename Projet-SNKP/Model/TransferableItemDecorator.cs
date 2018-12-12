@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Interface;
 
 namespace Model
 {
-    public class TransferableItemDecorator
+    public class TransferableItemDecorator : ITransferableItemDecorator
     {
         public enum Type { Preparation = 'p', Tool = 't'}
 
@@ -41,7 +42,7 @@ namespace Model
 
         }
 
-        public String toString()
+        public override String toString()
         {
             return ("" + (char)type + id);
         }

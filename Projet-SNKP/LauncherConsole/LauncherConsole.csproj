@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{88876812-4C9A-462D-A1D3-8745BCFDBDC1}</ProjectGuid>
+    <ProjectGuid>{630101D9-B4ED-4A90-A481-2564D94D5C7C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Interface</RootNamespace>
-    <AssemblyName>Interface</AssemblyName>
+    <RootNamespace>LauncherConsole</RootNamespace>
+    <AssemblyName>LauncherConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,23 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPreparation.cs" />
-    <Compile Include="IStrategyButler.cs" />
-    <Compile Include="IStrategyChef.cs" />
-    <Compile Include="IStrategyClerk.cs" />
-    <Compile Include="IStrategyClientGroup.cs" />
-    <Compile Include="IStrategyCooker.cs" />
-    <Compile Include="IStrategyDishwasher.cs" />
-    <Compile Include="IStrategyHeadWaiter.cs" />
-    <Compile Include="IStrategyKitchenClerk.cs" />
-    <Compile Include="IStrategyPasteryCooker.cs" />
-    <Compile Include="IStrategyWaiter.cs" />
-    <Compile Include="ITransferableItemDecorator.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BDD\BDD.csproj">
+      <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
+      <Name>BDD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GUI\GUI.csproj">
+      <Project>{28c3a3d7-74ae-498a-b5a0-5a8aa651c711}</Project>
+      <Name>GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalleController\SalleController.csproj">
+      <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>
+      <Name>SalleController</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

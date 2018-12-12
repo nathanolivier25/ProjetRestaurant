@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FactoryPeople.cs" />
+    <Compile Include="KitchenLauncher.cs" />
     <Compile Include="RestaurantLauncher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\BDD\BDD.csproj">
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
+      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
+      <Name>CuisineController</Name>
     </ProjectReference>
     <ProjectReference Include="..\GUI\GUI.csproj">
       <Project>{28c3a3d7-74ae-498a-b5a0-5a8aa651c711}</Project>
@@ -71,6 +76,10 @@
     <ProjectReference Include="..\SalleController\SalleController.csproj">
       <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>
       <Name>SalleController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCP\TCP.csproj">
+      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
+      <Name>TCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Interface
 {
-    public abstract class IStrategyChef
+    public abstract class ITransferableItemDecorator
     {
-       public abstract void RoleStrategy();
-       public abstract IPreparation attributTask();
-        
+        public abstract String toString();
     }
 }

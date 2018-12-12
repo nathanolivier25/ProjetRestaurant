@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-
 using Interface;
 using BDD;
 
@@ -19,22 +18,23 @@ namespace Model
         {
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
+            this.Thread.Start();
         }
+
+
         public void ThreadLoop()
         {
-            /*StrategyChef strategy_chef = new StrategyChef();
-            strategy_chef.BDDConnection = this.bdd_connection;
-
             while (this.Thread.IsAlive)
             {
-                strategy_chef.RoleStrategy();
-            }*/
+                strategy.RoleStrategy();
+            }
+
         }
 
-        public BDDConnection BDDConnection
+
+        public IStrategyChef getStrategy()
         {
-            get { return this.bdd_connection; }
-            set { this.bdd_connection = value; }
+            return this.strategy;
         }
 
 

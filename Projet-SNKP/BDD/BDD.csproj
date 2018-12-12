@@ -46,6 +46,7 @@
     <Compile Include="BDDConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueriesKitchen.cs" />
     <Compile Include="RestaurantQueries.cs" />
   </ItemGroup>
   <ItemGroup>

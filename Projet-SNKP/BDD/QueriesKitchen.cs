@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BDD
 {
-    class QueriesKitchen
+    public class QueriesKitchen
     {
         private string myTables;
         private string nameIngredient = null;
@@ -17,35 +17,33 @@ namespace BDD
         //revoir avec Hugo le nom des tables et des attributs
 
 
-        public string getStockIngredient() //valable pour le cuisinier et le patissier et le commis
+      /*  public string getStockIngredient() //valable pour le cuisinier et le patissier et le commis
         {
             return "SELECT * FROM Ingredient WHERE NomIngredient =" + nameIngredient;
+        }*/
+
+        public string getAvailableCommande()
+        {
+            return "SELECT * FROM Commande WHERE StatutCommande = 0";
+        }
+        public string setCommandeUnavailable(int idCommande)
+        {
+            return "UPDATE Commande SET StatutCommande = 1 WHERE IDCommande ="+ idCommande;
         }
 
-        public string getCommande()
+        public string getIDPreparation(int numeroCommande)
         {
-            return "SELECT * FROM Commande";
+            return "SELECT IDPreparation FROM LigneCommande WHERE NumeroCommande =" + numeroCommande;
         }
 
-        public string updateCommande()
-        {
-            return "UPDATE Recette SET validRecette =0 WHERE";  //revoir condition
-        }
 
-        public string getRecetteAvailable()
-        {
-            return "SELECT * FROM Recette WHERE valid = 1"; // revoir condition avec la quantité d'ingredients
-        }
+
         
         public string getTool()
         {
             return "SELECT * FROM StockCuisine WHERE nom =" + nameTool+"AND available =1";
         }
 
-        public string getPlatPret()
-        {
-            return "SELECT "
-        }
 
 
 

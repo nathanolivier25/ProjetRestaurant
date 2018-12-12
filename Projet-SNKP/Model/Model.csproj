@@ -75,10 +75,6 @@
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
-      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
-      <Name>CuisineController</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
       <Name>Interface</Name>

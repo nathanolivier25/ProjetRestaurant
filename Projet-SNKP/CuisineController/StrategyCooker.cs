@@ -27,6 +27,21 @@ namespace CuisineController
 
             Preparation cookerTask = (Preparation) chef.getStrategy().attributTask(); // on prend la liste des taches a faire de LigneCommande
 
+            List<Model.Task> tasksList = cookerTask.getTaskList();
+            List<List<Model.Tool>> toolList = cookerTask.getTaskToolList();
+            List<List<Model.Ingredient>> ingredientList = cookerTask.getTaskIngredientList();
+
+
+            for(int i=0; i<tasksList.Count; i++)
+            {
+                /*
+                tasksList.ElementAt(i).
+                */
+
+
+
+            }
+
 
 
         }

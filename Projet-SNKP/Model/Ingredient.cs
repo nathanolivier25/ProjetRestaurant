@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelConsole
+namespace Model
 {
-    class Ingredient
+    public class Ingredient
     {
-        private string nameIngredient;
-        public TimeSpan decayDuration;
+        private int id { get; set; }
+        private String name { get; set; }
 
-        public Ingredient()
+        public Ingredient(int _id, String _name)
         {
-            nameIngredient = null;
-            //decayDuration =
+            name = _name;
+            id = _id;
 
         }
 

@@ -11,21 +11,73 @@ namespace Model
     public class Preparation : IPreparation
 
     {
-        private String name;
         private BDDConnection bddconnection;
         private TransferableItemDecorator decorator;
 
-        public Preparation(int id,BDDConnection _bddconnection)
+        private int id;
+        private String name;
+        private List<Task> taskList;
+        private List<List<Ingredient>> ingredientList;
+        private List<List<Tool>> toolList;
+        
+
+        public Preparation(int _id,BDDConnection _bddconnection)
         {
+            id = _id;
             bddconnection = _bddconnection;
-            List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + id);
+            List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
             name = table.ElementAt(0).ElementAt(1);
-            decorator = new TransferableItemDecorator(id, TransferableItemDecorator.Type.Preparation);
+            decorator = new TransferableItemDecorator(_id, TransferableItemDecorator.Type.Preparation);
         }
 
         public override string toString()
         {
             return decorator.toString();
+        }
+
+        private void initList()
+        {
+            List<List<string>> table = bddconnection.executeQuery("SELECT Preparation.IDPreparation,"+
+                                                                  "Preparation.NomPreparation, Necessite.IDTache,"+
+                                                                  "Necessite.OrdreTache, Necessite.IDIngredients,"+
+                                                                  "Tache.NomTache, Tache.DureeTache,"+
+                                                                  "Utilise.IDMateriel, Materiel.NomMateriel,"+
+                                                                  "Materiel.Type, Materiel.EtatMateriel FROM Materiel,"+
+                                                                  "RIGHT JOIN Utilise ON Materiel.IDMateriel = Utilise.IDMateriel"+
+                                                                  "RIGHT JOIN Tache ON Utilise.IDTache = Tache.IDTache"+
+                                                                  "RIGHT JOIN Necessite ON Tache.IDTache = Necessite.IDTache"+
+                                                                  "RIGHT JOIN Preparation ON Necessite.IDPreparation = Preparation.IDPreparation"+
+                                                                  "WHERE Preparation.IDPreparation = " + id +
+                                                                  "ORDER BY Necessite.OrdreTache");
+
+            taskList = new List<Task>();
+
+            int lasttaskorder = 0;
+            for(int i=0; i < table.Count; i++)
+            {
+                if(lasttaskorder != Int32.Parse(table.ElementAt(i).ElementAt(3)))
+                {
+
+                }
+                
+            }
+
+
+        }
+
+        public List<Task> getTaskList()
+        {
+            return taskList;
+        }
+
+        public List<List<Ingredient>> getTaskIngredientList()
+        {
+            return ingredientList;
+        }
+
+        public List<List<Tool>> getTaskToolList()
+        {
+            return toolList;
         }
 
 

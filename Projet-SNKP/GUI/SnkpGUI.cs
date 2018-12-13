@@ -16,8 +16,6 @@ namespace GUI
         private RenderWindow app;
         private Boolean isOpen;
         private int timeState;
-        private TimeSpan timeText;
-        private Clock elapsedTime;
 
 
         public SnkpGUI(int restoRef)
@@ -25,9 +23,7 @@ namespace GUI
             this.restaurant = restoRef;
             this.app = new RenderWindow(new VideoMode(1200, 800), "SNKP!",Styles.Titlebar | Styles.Close);
             this.isOpen = new Boolean();
-            this.timeState = 1;
-            this.timeText = new TimeSpan(23,30,0);
-            this.elapsedTime = new Clock();
+            this.timeState = 0;
         }
 
         public void run()
@@ -41,7 +37,6 @@ namespace GUI
             while (this.isOpen)
             {
                 this.app.DispatchEvents();
-                this.HandleEvent();
                 this.app.Clear();
                 this.draw();
                 this.app.Display();
@@ -65,15 +60,18 @@ namespace GUI
             {
                 if (e.X >= 116 && e.X <= 144 && e.Y >= 15 && e.Y <= 43)
                 {
-                    this.timeState = 1;
+                    this.timeState = 0;
+                    Interface.Timer.getInstance().setMode(0);
                 }
                 else if (e.X >= 166 && e.X <= 194 && e.Y >= 15 && e.Y <= 43)
                 {
-                    this.timeState = 2;
+                    this.timeState = 1;
+                    Interface.Timer.getInstance().setMode(1);
                 }
                 else if (e.X >= 217 && e.X <= 245 && e.Y >= 15 && e.Y <= 43)
                 {
-                    this.timeState = 3;
+                    this.timeState = 2;
+                    Interface.Timer.getInstance().setMode(2);
                 }
             }
         }
@@ -85,10 +83,10 @@ namespace GUI
             Sprite actionbar;
             switch (this.timeState)
             {
-                case 1:
+                case 0:
                     actionbar = new Sprite(ressources.getTexture("ressources/actionbar.png"));
                     break;
-                case 2:
+                case 1:
                     actionbar = new Sprite(ressources.getTexture("ressources/actionbarplay.png"));
                     break;
                 default:
@@ -96,9 +94,9 @@ namespace GUI
                     break;
             }
             actionbar.Position = new Vector2f(103, 5);
-            Sprite background = new Sprite(ressources.getTexture("ressources/cuisine/background.png"));
+            Sprite background = new Sprite(ressources.getTexture("ressources/salle/background.png"));
 
-            Text timeDisplay = new Text(timeText.ToString(), ressources.getFont("ressources/malgunbd.ttf"));
+            Text timeDisplay = new Text(Interface.Timer.intTimeToStringTime((int)Interface.Timer.getInstance().getLocalTime()), ressources.getFont("ressources/malgunbd.ttf"));
             timeDisplay.Color = Color.Black;
             timeDisplay.CharacterSize = 15;
             timeDisplay.Position = new Vector2f(274, 20);
@@ -114,26 +112,6 @@ namespace GUI
             
 
         }
-
-        private void HandleEvent()
-        {
-            if(this.elapsedTime.ElapsedTime.AsSeconds() > 1 && timeState == 2)
-            {
-                this.elapsedTime.Restart();
-                this.timeText = new TimeSpan(this.timeText.Hours, this.timeText.Minutes, this.timeText.Seconds + 1);
-            }
-
-            if (this.elapsedTime.ElapsedTime.AsMilliseconds() > 17 && timeState == 3)
-            {
-                this.elapsedTime.Restart();
-
-                this.timeText = new TimeSpan(this.timeText.Hours, this.timeText.Minutes, this.timeText.Seconds + 1);
-
-            }
-
-        }
-
-
 
     }
 }

@@ -16,7 +16,8 @@ namespace SFML_Test
             GUI.SnkpGUI window = new GUI.SnkpGUI(1);
 
             window.run();
-           
+
+            Interface.Timer.getInstance().close();
         } 
     } 
 }

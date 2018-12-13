@@ -137,6 +137,10 @@
     <Folder Include="ressources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Interface\Interface.csproj">
+      <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
+      <Name>Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
       <Name>Model</Name>

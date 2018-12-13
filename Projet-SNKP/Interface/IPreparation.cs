@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Interface
 {
-    public abstract class IPreparation : ITransferableItemDecorator
+    public abstract class IPreparation : TransferableItemDecorator
     {
+        public IPreparation(int _id) : base(_id, Type.Preparation)
+        {
+
+        }
     }
 }

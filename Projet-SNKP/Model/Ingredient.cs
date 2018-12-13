@@ -8,14 +8,27 @@ namespace Model
 {
     public class Ingredient
     {
-        private int id { get; set; }
-        private String name { get; set; }
+        private int id;
+        private String name;
 
         public Ingredient(int _id, String _name)
         {
             name = _name;
             id = _id;
 
+        }
+
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value;  }
         }
 
     }

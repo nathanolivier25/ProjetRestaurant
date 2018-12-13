@@ -8,9 +8,9 @@ namespace Model
 {
     public class Task
     {
-        private int id { get; set; }
-        private string name { get; set; }
-        private int duration { get; set; }
+        private int id;
+        private string name;
+        private int duration;
 
         public Task(int _id, String _name, int _duration)
         {
@@ -19,6 +19,23 @@ namespace Model
             duration = _duration;
         }
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Duration
+        {
+            get { return duration; }
+            set { duration = value; }
+        }
 
 
 

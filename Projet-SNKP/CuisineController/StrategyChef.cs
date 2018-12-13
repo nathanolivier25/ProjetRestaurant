@@ -13,13 +13,14 @@ namespace CuisineController
     {
         private BDDConnection bdd_connection = null;
         private List<Preparation> myOrderList;
+        private ExchangerDesk exchangerDesk;
         
 
-        public StrategyChef(BDDConnection bdd_connection)
+        public StrategyChef(BDDConnection bdd_connection, ExchangerDesk _exchangerDesk)
         {
             this.bdd_connection = bdd_connection;
             myOrderList = new List<Preparation>();
-            
+            exchangerDesk = _exchangerDesk;
 
         }
 

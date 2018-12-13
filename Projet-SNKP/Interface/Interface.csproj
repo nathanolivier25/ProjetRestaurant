@@ -66,10 +66,10 @@
     <Compile Include="IStrategyKitchenClerk.cs" />
     <Compile Include="IStrategyPasteryCooker.cs" />
     <Compile Include="IStrategyWaiter.cs" />
-    <Compile Include="ITransferableItemDecorator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Timer.cs" />
+    <Compile Include="TransferableItemDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

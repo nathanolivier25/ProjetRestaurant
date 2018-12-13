@@ -12,7 +12,6 @@ namespace Model
 
     {
         private BDDConnection bddconnection;
-        private TransferableItemDecorator decorator;
 
         private int id;
         private String name;
@@ -21,18 +20,14 @@ namespace Model
         private List<List<Tool>> toolList;
         
 
-        public Preparation(int _id,BDDConnection _bddconnection)
+        public Preparation(int _id,BDDConnection _bddconnection) : base(_id)
         {
             id = _id;
             bddconnection = _bddconnection;
             List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
             name = table.ElementAt(0).ElementAt(1);
-            decorator = new TransferableItemDecorator(_id, TransferableItemDecorator.Type.Preparation);
-        }
 
-        public override string toString()
-        {
-            return decorator.toString();
+            initList();
         }
 
         private void initList()
@@ -57,11 +52,50 @@ namespace Model
             {
                 if(lasttaskorder != Int32.Parse(table.ElementAt(i).ElementAt(3)))
                 {
-
+                    lasttaskorder = Int32.Parse(table.ElementAt(i).ElementAt(3));
+                    taskList.Add(new Task(Int32.Parse(table.ElementAt(i).ElementAt(2)), table.ElementAt(i).ElementAt(5), Int32.Parse(table.ElementAt(i).ElementAt(6))));
                 }
-                
             }
 
+            ingredientList = new List<List<Ingredient>>();
+
+            lasttaskorder = 0;
+            for (int i = 0; i < table.Count; i++)
+            {
+                if (lasttaskorder != Int32.Parse(table.ElementAt(i).ElementAt(3)))
+                {
+                    lasttaskorder = Int32.Parse(table.ElementAt(i).ElementAt(3));
+
+                    List<Ingredient> temp = new List<Ingredient>();
+
+                    String stringredients = table.ElementAt(i).ElementAt(4);
+                    String[] ingredients = stringredients.Split(',');
+
+                    for(int j=0; j < ingredients.Length; j++)
+                    {
+                        temp.Add(new Ingredient(Int32.Parse(ingredients[j]), ""));
+                    }
+
+                    ingredientList.Add(temp);
+                }
+            }
+
+            toolList = new List<List<Tool>>();
+            lasttaskorder = 0;
+            for (int i = 0; i < table.Count; i++)
+            {
+                if (lasttaskorder != Int32.Parse(table.ElementAt(i).ElementAt(3)))
+                {
+                    List<Tool> tools = new List<Tool>();
+                    tools.Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7))));
+                    toolList.Add(tools);
+                }
+                else
+                {
+                    toolList.ElementAt(toolList.Count - 1).Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7))));
+                }
+
+            }
 
         }
 

@@ -54,7 +54,6 @@
     <Compile Include="Headwaiter.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="TransferableItemDecorator.cs" />
     <Compile Include="KitchenClerk.cs" />
     <Compile Include="KitchenStock.cs" />
     <Compile Include="Preparation.cs" />

@@ -59,6 +59,10 @@
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GUI\GUI.csproj">
+      <Project>{28c3a3d7-74ae-498a-b5a0-5a8aa651c711}</Project>
+      <Name>GUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
       <Name>Interface</Name>

@@ -10,6 +10,8 @@ namespace BDD
     {
         private static string table_group_client = "GroupClient";
         private static string table_table_restaurant = "TableRestaurant";
+        private static string table_tache = "Tache";
+        private static string table_time_speed = "TimeSpeed";
 
         public RestaurantQueries()
         {
@@ -19,6 +21,16 @@ namespace BDD
         public static string getNewGroupClient()
         {
             return "SELECT * FROM " + table_group_client + " WHERE Etat = 0;";
+        }
+
+        public static string getGroupState(int id_group)
+        {
+            return "SELECT Etat FROM " + table_group_client + " WHERE ID = " + id_group;
+        }
+
+        public static string setGroupState(int id_group, int state)
+        {
+            return "UPDATE " + table_group_client + " SET Etat = " + state + " WHERE ID = " + id_group;
         }
 
         public static string setGroupStateToUnavailable(int id_group)
@@ -35,6 +47,11 @@ namespace BDD
         public static string setGroupStateToInstalled(int id_group)
         {
             return "UPDATE " + table_group_client + " SET Etat = 2 WHERE ID = " + id_group;
+        }
+
+        public static string setGroupStateToTakeCommand(int id_group)
+        {
+            return "UPDATE " + table_group_client + " SET Etat = 4 WHERE ID = " + id_group;
         }
 
         public static string getNbClientInGroup(int id_group)
@@ -78,7 +95,13 @@ namespace BDD
 
         public static string getTaskDuration(string task_name)
         {
-            return "SELECT Duree FROM Tache WHERE Nom = '" + task_name + "'";
+            return "SELECT Duree * 10000 * (SELECT Speed FROM " + table_time_speed + 
+                " WHERE ID = 1) AS Duree FROM " + table_tache + " WHERE Nom = '" + task_name + "'";
+        }
+
+        public static string getCommandToTake()
+        {
+            return "SELECT ID FROM GroupClient WHERE Etat = 4;";
         }
     }
 }

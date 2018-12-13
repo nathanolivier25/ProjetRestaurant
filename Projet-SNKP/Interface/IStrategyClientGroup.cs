@@ -10,5 +10,10 @@ namespace Interface
     {
 
         public abstract void RoleStrategy();
+
+        public abstract int IDGroup
+        {
+            set;
+        }
     }
 }

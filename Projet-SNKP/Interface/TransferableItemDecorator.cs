@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Interface;
 
-namespace Model
+namespace Interface
 {
-    public class TransferableItemDecorator : ITransferableItemDecorator
+    public class TransferableItemDecorator
     {
         public enum Type { Preparation = 'p', Tool = 't'}
 
@@ -42,7 +42,7 @@ namespace Model
 
         }
 
-        public override String toString()
+        public String toString()
         {
             return ("" + (char)type + id);
         }

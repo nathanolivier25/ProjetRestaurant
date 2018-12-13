@@ -8,15 +8,35 @@ namespace Model
 {
     public class Task
     {
-        private string taskName;
-        private int taskDuration;
-        private Preparation preparation;
-        private Tool tool;
+        private int id;
+        private string name;
+        private int duration;
 
-        public Task()
+        public Task(int _id, String _name, int _duration)
         {
-
+            id = _id;
+            name = _name;
+            duration = _duration;
         }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Duration
+        {
+            get { return duration; }
+            set { duration = value; }
+        }
+
 
 
     }

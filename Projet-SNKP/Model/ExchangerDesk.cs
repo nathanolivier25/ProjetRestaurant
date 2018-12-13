@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 
 using TCP;
+using Interface;
 
 
 namespace Model
@@ -32,6 +33,7 @@ namespace Model
             thread = new Thread(new ThreadStart(threadMain));
             thread.Start();
         }
+
 
         private void threadMain()
         {

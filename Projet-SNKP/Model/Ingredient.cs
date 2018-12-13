@@ -4,18 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelConsole
+namespace Model
 {
-    class Ingredient
+    public class Ingredient
     {
-        private string nameIngredient;
-        public TimeSpan decayDuration;
+        private int id;
+        private String name;
 
-        public Ingredient()
+        public Ingredient(int _id, String _name)
         {
-            nameIngredient = null;
-            //decayDuration =
+            name = _name;
+            id = _id;
 
+        }
+
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value;  }
         }
 
     }

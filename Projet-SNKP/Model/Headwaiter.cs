@@ -20,7 +20,7 @@ namespace Model
             strategy = givenStrategy;
             strategy.Carre = carre;
 
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
 
             this.carre = carre;
             this.id_tables = new List<int>();

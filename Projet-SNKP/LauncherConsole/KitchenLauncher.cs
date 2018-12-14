@@ -10,7 +10,7 @@ namespace LauncherConsole
 {
     class KitchenLauncher
     {
-        TCP.TCP tcp = new TCP.TCP();
+        //TCP.TCP tcp = new TCP.TCP();
 
 
     }

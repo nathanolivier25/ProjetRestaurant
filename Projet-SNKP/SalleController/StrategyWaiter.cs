@@ -15,7 +15,7 @@ namespace SalleController
 
         public StrategyWaiter(BDDConnection bdd_connection)
         {
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
         }
 
         public override void RoleStrategy()

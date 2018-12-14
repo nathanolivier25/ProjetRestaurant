@@ -31,7 +31,7 @@ namespace Launcher
 
         public void openBDDConnection()
         {
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
         }
 
 

@@ -18,7 +18,7 @@ namespace SalleController
 
         public StrategyHeadWaiter()
         {
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
         }
 
         public override void RoleStrategy()
@@ -60,11 +60,12 @@ namespace SalleController
             }
 
             // Check if a group wants to take her command
-            List<List<string>> list_commands_to_take = this.bdd_connection.executeQuery(RestaurantQueries.getCommandToTake());
+            List<List<string>> list_commands_to_take = this.bdd_connection.executeQuery(RestaurantQueries.getCommandToTake(carre));
             if (list_commands_to_take.Count > 0)
             {
                 int id_group = int.Parse(list_commands_to_take[0][0]);
-
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToOrder(id_group));
+                Console.WriteLine("Le chef de rang vient prendre la commande du groupe " + id_group);
             }
         }
 

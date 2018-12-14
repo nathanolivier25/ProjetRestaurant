@@ -16,7 +16,7 @@ namespace SalleController
 
         public StrategyClientGroup(BDDConnection bdd_connection = null)
         {
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "Test");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
         }
 
         public override void RoleStrategy()
@@ -36,6 +36,32 @@ namespace SalleController
 
                     this.bdd_connection.executeQuery(RestaurantQueries.setGroupStateToTakeCommand(ID_group));
                     Console.WriteLine("Le groupe " + ID_group + " attend pour passer sa commande");
+                    break;
+                case 5:
+                    Console.WriteLine("Le groupe " + ID_group + " donne sa commande");
+
+                    // Create new command in the bdd
+                    int id_table = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getGroupTable(ID_group))[0][0]);
+                    this.bdd_connection.executeNonQuery(RestaurantQueries.createCommand(id_table));
+                    int id_command = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getCommandID(id_table))[0][0]);
+                    int nb_clients = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getNbClientInGroup(ID_group))[0][0]);
+
+                    // Choose the menu for each customer
+                    Random random = new Random();
+                    int id_preparation = 0;
+                    for (int i = 0; i < nb_clients; i++)
+                    {
+                        id_preparation = random.Next(1, 11);
+                        this.bdd_connection.executeNonQuery(RestaurantQueries.addAppetizer(id_command, id_preparation));
+                        id_preparation = random.Next(11, 21);
+                        this.bdd_connection.executeNonQuery(RestaurantQueries.addMainCourse(id_command, id_preparation));
+                        id_preparation = random.Next(21, 31);
+                        this.bdd_connection.executeNonQuery(RestaurantQueries.addDessert(id_command, id_preparation));
+                    }
+
+                    this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(ID_group, 6));
+                    Console.WriteLine("Le groupe " + ID_group + " a validé sa commande");
+
                     break;
             }
         }

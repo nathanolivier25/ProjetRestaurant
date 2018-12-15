@@ -52,11 +52,11 @@ namespace SalleController
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupTable(id_group, id_table));
 
                 // Instanciate a new client group
-                ClientGroup group_client = new ClientGroup(new StrategyClientGroup(this.bdd_connection), this.bdd_connection);
+                /*ClientGroup group_client = new ClientGroup(new StrategyClientGroup(this.bdd_connection), this.bdd_connection);
                 group_client.IDGroup = id_group;
                 group_client.IDTable = id_table;
                 group_client.NbClients = nb_clients;
-                Console.WriteLine("Assignation de la table " + id_table + " au groupe " + id_group);
+                Console.WriteLine("Assignation de la table " + id_table + " au groupe " + id_group);*/
             }
             return 0;
         }

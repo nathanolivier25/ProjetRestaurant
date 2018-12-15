@@ -8,8 +8,13 @@ namespace BDD
 {
     public class RestaurantQueries
     {
-        private static string table_group_client = "GroupClient";
-        private static string table_table_restaurant = "TableRestaurant";
+        private static string table_group_client = "groupclient";
+        private static string table_table_restaurant = "tablerestaurant";
+        private static string table_tache = "Tache";
+        private static string table_time_speed = "SpeedTime";
+        private static string table_commande = "commande";
+        private static string table_preparations = "preparation";
+        private static string table_ligne_command = "lignecommande";
 
         public RestaurantQueries()
         {
@@ -21,64 +26,130 @@ namespace BDD
             return "SELECT * FROM " + table_group_client + " WHERE Etat = 0;";
         }
 
+        public static string getGroupState(int id_group)
+        {
+            return "SELECT Etat FROM " + table_group_client + " WHERE IDGroupe = " + id_group;
+        }
+
+        public static string setGroupState(int id_group, int state)
+        {
+            return "UPDATE " + table_group_client + " SET Etat = " + state + " WHERE IDGroupe = " + id_group;
+        }
+
         public static string setGroupStateToUnavailable(int id_group)
         {
-            return "UPDATE " + table_group_client + " SET Etat = -1 WHERE ID = " + id_group;
+            return "UPDATE " + table_group_client + " SET Etat = -1 WHERE IDGroupe = " + id_group;
         }
 
         public static string setGroupStateToWelcomed(int id_group)
         {
-            return "UPDATE " + table_group_client + " SET Etat = 1 WHERE ID = " + 
+            return "UPDATE " + table_group_client + " SET Etat = 1 WHERE IDGroupe = " + 
                 id_group.ToString() + ";";
         }
 
         public static string setGroupStateToInstalled(int id_group)
         {
-            return "UPDATE " + table_group_client + " SET Etat = 2 WHERE ID = " + id_group;
+            return "UPDATE " + table_group_client + " SET Etat = 2 WHERE IDGroupe = " + id_group;
+        }
+
+        public static string setGroupStateToTakeCommand(int id_group)
+        {
+            return "UPDATE " + table_group_client + " SET Etat = 4 WHERE IDGroupe = " + id_group;
+        }
+
+        public static string setGroupStateToOrder(int id_group)
+        {
+            return "UPDATE " + table_group_client + " SET Etat = 5 WHERE IDGroupe = " + id_group;
         }
 
         public static string getNbClientInGroup(int id_group)
         {
-            return "SELECT Nb_Clients FROM " + table_group_client + " WHERE ID = " + id_group.ToString() + ";";
+            return "SELECT NombreClient FROM " + table_group_client + " WHERE IDGroupe = " + id_group.ToString() + ";";
         }
 
         public static string getFreeTable(int nb_clients)
         {
-            return "SELECT ID FROM " + table_table_restaurant + " WHERE Etat = 0 AND Nb_places >= " + 
-                nb_clients.ToString() + " ORDER BY Nb_places;";
+            return "SELECT IDTable FROM " + table_table_restaurant + " WHERE EtatTable = 0 AND NbrPlacesTable >= " + 
+                nb_clients.ToString() + " ORDER BY NbrPlacesTable;";
         }
 
         public static string setTableOccupied(int id_table)
         {
-            return "UPDATE " + table_table_restaurant + " SET Etat = 1 WHERE ID = " + 
+            return "UPDATE " + table_table_restaurant + " SET EtatTable = 1 WHERE IDTable = " + 
                 id_table.ToString() + ";";
         }
 
         public static string setGroupTable(int id_group, int id_table)
         {
-            return "UPDATE " + table_group_client + " SET ID_Table = " + id_table + " WHERE ID = " + id_group;
+            return "UPDATE " + table_group_client + " SET IDTable = " + id_table + " WHERE IDGroupe = " + id_group;
+        }
+
+        public static string getGroupTable(int id_group)
+        {
+            return "SELECT IDTable FROM " + table_group_client + " WHERE IDGroupe = " + id_group;
         }
 
         public static string getWaiterTables(int id_carre)
         {
-            return "SELECT ID FROM " + table_table_restaurant + " WHERE ID_carre = " + id_carre;
+            return "SELECT IDTable FROM " + table_table_restaurant + " WHERE IDCarre = " + id_carre;
         }
 
         public static string getCustomersToPlace(int carre)
         {
-            return "SELECT " + table_group_client + ".ID, " + table_group_client + ".ID_Table FROM " + table_group_client +
-                " INNER JOIN " + table_table_restaurant + " ON " + table_group_client + ".ID_Table = " + table_table_restaurant +
-                ".ID WHERE " + table_group_client + ".Etat = 1 AND " + table_table_restaurant + ".ID_Carre = " + carre + ";";
+            return "SELECT " + table_group_client + ".IDGroupe, " + table_group_client + ".IDTable FROM " + table_group_client +
+                " INNER JOIN " + table_table_restaurant + " ON " + table_group_client + ".IDTable = " + table_table_restaurant +
+                ".IDTable WHERE " + table_group_client + ".Etat = 1 AND " + table_table_restaurant + ".IDCarre = " + carre + ";";
         }
 
         public static string setTableGroupID(int id_table, int id_group)
         {
-            return "UPDATE " + table_table_restaurant + " SET ID_Group = " + id_group + " WHERE ID = " + id_table;
+            return "UPDATE " + table_table_restaurant + " SET IDGroup = " + id_group + " WHERE IDTable = " + id_table;
         }
 
         public static string getTaskDuration(string task_name)
         {
-            return "SELECT Duree FROM Tache WHERE Nom = '" + task_name + "'";
+            return "SELECT DureeTache * 1000 * (SELECT Speed FROM " + table_time_speed + 
+                " WHERE ID = 1) FROM Tache WHERE NomTache = '" + task_name + "';";
+        }
+
+        public static string getCommandToTake(int carre)
+        {
+            return "SELECT IDGroupe, " + table_group_client + ".IDTable FROM " + table_group_client +
+                " INNER JOIN " + table_table_restaurant + " ON " + table_table_restaurant + ".IDTable = " 
+                + table_group_client + ".IDTable WHERE Etat = 4 AND IDCarre = " + carre;
+        }
+
+        public static string createCommand(int id_table)
+        {
+            return "INSERT INTO " + table_commande + "(IDTable) VALUES (" + id_table + ");";
+        }
+
+        public static string getCommandID(int id_table)
+        {
+            return "SELECT NumeroCommande FROM " + table_commande + " WHERE StatutCommande = 0;";
+        }
+
+        public static string getPreparations()
+        {
+            return "SELECT * FROM " + table_preparations;
+        }
+
+        public static string addAppetizer(int id_command, int id_preparation)
+        {
+            return "INSERT INTO " + table_ligne_command + "(IDPreparation, NumeroCommande, QuantiteRecette, CategorieRecette) VALUES(" +
+                id_preparation + ", " + id_command + ", 1, 1);";
+        }
+
+        public static string addMainCourse(int id_command, int id_preparation)
+        {
+            return "INSERT INTO " + table_ligne_command + "(IDPreparation, NumeroCommande, QuantiteRecette, CategorieRecette) VALUES(" +
+                id_preparation + ", " + id_command + ", 1, 2);";
+        }
+
+        public static string addDessert(int id_command, int id_preparation)
+        {
+            return "INSERT INTO " + table_ligne_command + "(IDPreparation, NumeroCommande, QuantiteRecette, CategorieRecette) VALUES(" +
+                id_preparation + ", " + id_command + ", 1, 3);";
         }
     }
 }

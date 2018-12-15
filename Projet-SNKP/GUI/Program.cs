@@ -13,7 +13,7 @@ namespace SFML_Test
 
         static void Main()
         {
-            GUI.SnkpGUI window = new GUI.SnkpGUI(1);
+            GUI.SnkpGUI window = new GUI.SnkpGUI(true,null);
 
             window.run();
 

@@ -14,6 +14,8 @@ namespace Model
 
         public Cooker(IStrategyCooker givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
+            Console.WriteLine("Le cuisinier vient d'arriver au restaurant");
+
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
             this.Thread.Start();

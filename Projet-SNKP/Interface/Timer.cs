@@ -62,7 +62,7 @@ namespace Interface
             return instance;
         }
 
-        public float getLocalTime()
+        public int getLocalTime()
         {
             return actualTime;
         }

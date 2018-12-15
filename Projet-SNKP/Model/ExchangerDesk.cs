@@ -29,6 +29,7 @@ namespace Model
             connection = _connection;
             side = _side;
             inputBuffer = new List<TransferableItemDecorator>();
+            sendBuffer = new List<TransferableItemDecorator>();
 
             thread = new Thread(new ThreadStart(threadMain));
             thread.Start();
@@ -40,13 +41,16 @@ namespace Model
             threadIsRunning = true;
             while (threadIsRunning)
             {
-                if(sendBuffer.Count >= 1)
+                if (sendBuffer != null)
                 {
-                    connection.write(sendBuffer.ElementAt(0).toString());
+                    if (sendBuffer.Count >= 1)
+                    {
+                        connection.write(sendBuffer.ElementAt(0).toString());
+                    }
                 }
 
                 String str = connection.read();
-                if(str.Length >= 0)
+                if (str.Length > 0)
                 {
                     inputBuffer.Add(new TransferableItemDecorator(str));
                 }

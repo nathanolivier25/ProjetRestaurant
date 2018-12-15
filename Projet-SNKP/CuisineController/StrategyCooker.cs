@@ -29,25 +29,34 @@ namespace CuisineController
         {
 
             Preparation cookerTask = (Preparation) chef.getStrategy().attributTask(); // on prend la liste des taches a faire de LigneCommande
-
-            List<Model.Task> tasksList = cookerTask.getTaskList();
-            List<List<Model.Tool>> toolList = cookerTask.getTaskToolList();
-            List<List<Model.Ingredient>> ingredientList = cookerTask.getTaskIngredientList();
-
-
-            for(int i=0; i<tasksList.Count; i++)
+            if (cookerTask != null)
             {
-                int actualTimeLimit = (int) Interface.Timer.getInstance().getLocalTime();
-                actualTimeLimit += tasksList.ElementAt(i).Duration;
+                List<Model.Task> tasksList = cookerTask.getTaskList();
 
-                while (actualTimeLimit >= (int)Interface.Timer.getInstance().getLocalTime())
+                if (tasksList != null)
                 {
-                    Thread.Sleep(50);
+                    Console.WriteLine("le cuisinier commence la preparation de :" + cookerTask.name);
+
+                    List<List<Model.Tool>> toolList = cookerTask.getTaskToolList();
+                    List<List<Model.Ingredient>> ingredientList = cookerTask.getTaskIngredientList();
+
+
+                    for (int i = 0; i < tasksList.Count; i++)
+                    {
+                        Console.WriteLine("le cuisinier commence l'etape" + i+1 + " de :" + cookerTask.name + "  - il " + tasksList.ElementAt(i).Name);
+
+                        int actualTimeLimit = (int)Interface.Timer.getInstance().getLocalTime();
+                        actualTimeLimit += tasksList.ElementAt(i).Duration;
+
+                        while (actualTimeLimit >= (int)Interface.Timer.getInstance().getLocalTime())
+                        {
+                            Thread.Sleep(50);
+                        }
+                    }
+
+                    exchangerDesk.AddToDesk(cookerTask);
                 }
             }
-
-            exchangerDesk.AddToDesk(cookerTask);
-
         }
 
 

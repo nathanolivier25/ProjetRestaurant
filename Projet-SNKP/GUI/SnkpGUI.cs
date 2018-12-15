@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
+
+using Model;
 
 
 namespace GUI
@@ -12,18 +18,20 @@ namespace GUI
     public class SnkpGUI
     {
 
-        private int restaurant;
+        private Boolean restaurant;
         private RenderWindow app;
         private Boolean isOpen;
         private int timeState;
+        private List<People> actorList;
 
 
-        public SnkpGUI(int restoRef)
+        public SnkpGUI(Boolean restoRef, List<People> actorList)
         {
             this.restaurant = restoRef;
             this.app = new RenderWindow(new VideoMode(1200, 800), "SNKP!",Styles.Titlebar | Styles.Close);
             this.isOpen = new Boolean();
             this.timeState = 0;
+            this.actorList = actorList;
         }
 
         public void run()
@@ -94,7 +102,7 @@ namespace GUI
                     break;
             }
             actionbar.Position = new Vector2f(103, 5);
-            Sprite background = new Sprite(ressources.getTexture("ressources/salle/background.png"));
+            Sprite background = new Sprite(ressources.getTexture("ressources/cuisine/background.png"));
 
             Text timeDisplay = new Text(Interface.Timer.intTimeToStringTime((int)Interface.Timer.getInstance().getLocalTime()), ressources.getFont("ressources/malgunbd.ttf"));
             timeDisplay.Color = Color.Black;

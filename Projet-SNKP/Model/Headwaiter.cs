@@ -15,22 +15,11 @@ namespace Model
         private int carre = 0;
         private List<int> id_tables = null;
 
-        public HeadWaiter(IStrategyHeadWaiter givenStrategy, BDDConnection bdd_connection, int carre): base(bdd_connection)
+        public HeadWaiter(IStrategyHeadWaiter givenStrategy, BDDConnection bdd_connection, ExchangerDesk exchanger_desk, int carre)
+            : base(bdd_connection)
         {
             strategy = givenStrategy;
             strategy.Carre = carre;
-
-            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
-
-            this.carre = carre;
-            this.id_tables = new List<int>();
-
-            // Get the waiter tables
-            List<List<string>> list_tables = this.bdd_connection.executeQuery(RestaurantQueries.getWaiterTables(carre));
-            for (int i = 0; i < list_tables.LongCount(); i++)
-            {
-                this.id_tables.Add(int.Parse(list_tables[i][0]));
-            }
 
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
             this.Thread.Start();

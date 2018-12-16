@@ -1,4 +1,5 @@
 ﻿using BDD;
+using Interface;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace SalleController
                     List<List<string>> list_duration = this.bdd_connection.executeQuery(
                         RestaurantQueries.getTaskDuration("Place group"));
                     float time = float.Parse(list_duration[0][0]);
-                    Thread.Sleep((int)time);
+                    Butler.Timer.wait(time);
 
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setTableGroupID(id_table, id_group));
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToInstalled(id_group));
@@ -50,7 +51,7 @@ namespace SalleController
 
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToUnavailable(id_group));
 
-                    Thread.Sleep((int)time);
+                    Butler.Timer.wait(time);
                     Console.WriteLine("Le chef de rang donne la carte au groupe " + id_group);
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(id_group, 3));
 
@@ -66,6 +67,11 @@ namespace SalleController
                 int id_group = int.Parse(list_commands_to_take[0][0]);
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToOrder(id_group));
                 Console.WriteLine("Le chef de rang vient prendre la commande du groupe " + id_group);
+                while (!int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getGroupState(id_group))[0][0]).Equals(6))
+                {
+                    Thread.Sleep(100);
+                }
+                Console.WriteLine("Le chef de rang apporte la commande au comptoir");
             }
         }
 

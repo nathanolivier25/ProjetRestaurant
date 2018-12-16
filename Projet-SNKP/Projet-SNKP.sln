@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP", "TCP\TCP.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{88876812-4C9A-462D-A1D3-8745BCFDBDC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesWindow", "PropertiesWindow\PropertiesWindow.csproj", "{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,14 @@ Global
 		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|x86.ActiveCfg = Release|Any CPU
 		{88876812-4C9A-462D-A1D3-8745BCFDBDC1}.Release|x86.Build.0 = Release|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

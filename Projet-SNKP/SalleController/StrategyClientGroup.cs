@@ -1,4 +1,5 @@
 ﻿using BDD;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace SalleController
                     Console.WriteLine("Le groupe " + ID_group + " consulte le menu");
                     this.bdd_connection.executeQuery(RestaurantQueries.setGroupStateToUnavailable(ID_group));
                     sleep_time = float.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getTaskDuration("Choose menu"))[0][0]);
-                    Thread.Sleep((int)sleep_time);
+                    Butler.Timer.wait(sleep_time);
 
                     this.bdd_connection.executeQuery(RestaurantQueries.setGroupStateToTakeCommand(ID_group));
                     Console.WriteLine("Le groupe " + ID_group + " attend pour passer sa commande");
@@ -48,6 +49,7 @@ namespace SalleController
 
                     // Choose the menu for each customer
                     Random random = new Random();
+                    sleep_time = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getTaskDuration("Command"))[0][0]);
                     int id_preparation = 0;
                     for (int i = 0; i < nb_clients; i++)
                     {
@@ -57,6 +59,7 @@ namespace SalleController
                         this.bdd_connection.executeNonQuery(RestaurantQueries.addMainCourse(id_command, id_preparation));
                         id_preparation = random.Next(21, 31);
                         this.bdd_connection.executeNonQuery(RestaurantQueries.addDessert(id_command, id_preparation));
+                        Butler.Timer.wait(sleep_time);
                     }
 
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(ID_group, 6));

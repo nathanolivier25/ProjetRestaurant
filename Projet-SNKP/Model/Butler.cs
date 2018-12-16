@@ -13,6 +13,7 @@ namespace Model
     public class Butler : People
     {
         IStrategyButler strategy;
+        private static Interface.Timer timer;
 
         public Butler(IStrategyButler givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
@@ -27,6 +28,12 @@ namespace Model
             {
                 strategy.RoleStrategy();
             }
+        }
+
+        public static Interface.Timer Timer
+        {
+            get { return timer; }
+            set { timer = value; }
         }
     }
 }

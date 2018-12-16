@@ -34,14 +34,17 @@ namespace Interface
         {
             while (isopen)
             {
-
-
                 if (clock.ElapsedTime.AsMilliseconds() >= 1000 && mode == 1)
                 {
                     clock.Restart();
                     actualTime++;
                 }
                 else if (clock.ElapsedTime.AsMilliseconds() >= 200 && mode == 2)
+                {
+                    clock.Restart();
+                    actualTime++;
+                }
+                else if (clock.ElapsedTime.AsMilliseconds() >= 5 && mode == 3)
                 {
                     clock.Restart();
                     actualTime++;
@@ -66,9 +69,24 @@ namespace Interface
             return actualTime;
         }
 
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public void setMode(int _mode)
         {
             mode = _mode;
+        }
+
+        public void wait(float time)
+        {
+            float start_time = this.getLocalTime();
+            while(this.getLocalTime() < start_time + time)
+            {
+                Thread.Sleep(10);
+            }
         }
 
         public void close()

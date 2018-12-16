@@ -10,9 +10,12 @@ namespace Model
 {
     public class Tool : TransferableItemDecorator
     {
-        public Tool(int id) : base(id, TransferableItemDecorator.Type.Tool)
-        {
+        public string name;
 
+        public Tool(int id,BDD.BDDConnection bdd) : base(id, TransferableItemDecorator.Type.Tool)
+        {
+            List<List<String>> table = bdd.executeQuery("SELECT * FROM Materiel WHERE IDMateriel = " + id);
+            name = table.ElementAt(0).ElementAt(1);
         }
 
 

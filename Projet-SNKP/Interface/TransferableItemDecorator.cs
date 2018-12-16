@@ -22,7 +22,6 @@ namespace Interface
 
         public TransferableItemDecorator(String str)
          {
-            Console.WriteLine("received str :"+str+":");
             char c = str.ElementAt(0);
             int i = Int32.Parse(str.Substring(1));
 

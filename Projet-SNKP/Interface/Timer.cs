@@ -41,13 +41,13 @@ namespace Interface
                     clock.Restart();
                     actualTime++;
                 }
-                else if (clock.ElapsedTime.AsMilliseconds() >= 200 && mode == 2)
+                else if (clock.ElapsedTime.AsMilliseconds() >= 50 && mode == 2)
                 {
                     clock.Restart();
                     actualTime++;
                 }
 
-                Thread.Sleep(50);
+                Thread.Sleep(2);
             }
         }
 

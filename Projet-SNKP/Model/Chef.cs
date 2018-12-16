@@ -11,12 +11,12 @@ namespace Model
 {
   public class Chef : People
     {
-        IStrategyChef strategy;
+        public IStrategyChef strategy;
         private BDDConnection bdd_connection = null;
 
         public Chef(IStrategyChef givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
-            Console.WriteLine("Le chef vient d'arriver au restaurant");
+            Console.WriteLine("Le CHEF vient d'arriver au restaurant");
 
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));

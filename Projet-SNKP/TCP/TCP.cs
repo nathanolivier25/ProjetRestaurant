@@ -49,7 +49,7 @@ namespace TCP
             {
                 string temp = receiveData();
                 if (temp.Length >= 1)
-                    inputBuffer += temp;
+                    inputBuffer = inputBuffer + temp;
             }
         }
 
@@ -100,22 +100,18 @@ namespace TCP
             if ((i = ns.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                Console.WriteLine("Received: {0}", data);
                 toreturn += data;
             }
             return toreturn;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public String read()
         {
             String toreturn = "";
 
-            String[] inputArray = inputBuffer.Split('\n');
+            String[] inputArray = inputBuffer.Trim('\n').Split('\n');
 
-            if(inputBuffer.Length >= 1)
-
-            if (inputArray.Length >= 2)
+            if (inputArray[0].Length >= 2)
             {
                 toreturn = inputArray[0];
                 inputBuffer = "";
@@ -129,17 +125,14 @@ namespace TCP
             return toreturn;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void write(String data)
         {
             data += '\n';
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
 
             ns.Write(msg, 0, msg.Length);
-            Console.WriteLine("Sent: {0}", data);
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void close()
         {
             threadIsRunning = false;

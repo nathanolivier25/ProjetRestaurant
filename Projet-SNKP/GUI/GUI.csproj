@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KitchenGUI.cs" />
     <Compile Include="Ressources.cs" />
     <Compile Include="SnkpGUI.cs" />
     <Compile Include="Program.cs" />
@@ -137,6 +138,10 @@
     <Folder Include="ressources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
+      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
+      <Name>CuisineController</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
       <Name>Interface</Name>

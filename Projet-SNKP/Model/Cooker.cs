@@ -10,11 +10,11 @@ namespace Model
 {
     public class Cooker : People
     {
-        IStrategyCooker strategy;
+        public IStrategyCooker strategy;
 
         public Cooker(IStrategyCooker givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
-            Console.WriteLine("Le cuisinier vient d'arriver au restaurant");
+            Console.WriteLine("Le CUISINIER vient d'arriver au restaurant");
 
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));

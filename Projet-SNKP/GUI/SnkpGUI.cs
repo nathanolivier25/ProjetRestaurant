@@ -23,6 +23,7 @@ namespace GUI
         private Boolean isOpen;
         private int timeState;
         private List<People> actorList;
+        private KitchenGUI kitchenGui;
 
 
         public SnkpGUI(Boolean restoRef, List<People> actorList)
@@ -32,6 +33,7 @@ namespace GUI
             this.isOpen = new Boolean();
             this.timeState = 0;
             this.actorList = actorList;
+            this.kitchenGui = new KitchenGUI(actorList);
         }
 
         public void run()
@@ -102,7 +104,6 @@ namespace GUI
                     break;
             }
             actionbar.Position = new Vector2f(103, 5);
-            Sprite background = new Sprite(ressources.getTexture("ressources/cuisine/background.png"));
 
             Text timeDisplay = new Text(Interface.Timer.intTimeToStringTime((int)Interface.Timer.getInstance().getLocalTime()), ressources.getFont("ressources/malgunbd.ttf"));
             timeDisplay.Color = Color.Black;
@@ -110,11 +111,15 @@ namespace GUI
             timeDisplay.Position = new Vector2f(274, 20);
 
 
+            if(restaurant == true)
+            {
 
+            }
+            else
+            {
+                this.app.Draw(kitchenGui);
+            }
 
-
-
-            this.app.Draw(background);
             this.app.Draw(actionbar);
             this.app.Draw(timeDisplay);
             

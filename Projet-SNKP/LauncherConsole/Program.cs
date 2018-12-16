@@ -10,7 +10,7 @@ namespace Launcher
     {
         static void Main(string[] args)
         {
-            new RestaurantLauncher();
+            new KitchenLauncher();
         }
     }
 }

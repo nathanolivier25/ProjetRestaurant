@@ -9,6 +9,8 @@ namespace Model
 {
     public class People
     {
+        public enum Job { Chef,Cooker,Dishwasher,KitchenClerk,PasteryCooker,Butler,Clerk,ClientGroup,HeadWaiter,Waiter}
+
         protected string name;
         protected string role;
         protected string state;

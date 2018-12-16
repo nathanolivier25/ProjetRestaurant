@@ -33,8 +33,8 @@ namespace Launcher
 
         public void launchGUI()
         {
-            SnkpGUI window = new SnkpGUI(1);
-            window.run();
+            //SnkpGUI window = new SnkpGUI(1);
+            //window.run();
         }
 
         public void startTimer()

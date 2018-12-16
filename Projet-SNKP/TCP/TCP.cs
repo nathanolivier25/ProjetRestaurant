@@ -47,7 +47,9 @@ namespace TCP
             threadIsRunning = true;
             while (threadIsRunning)
             {
-                inputBuffer = receiveData();
+                string temp = receiveData();
+                if (temp.Length >= 1)
+                    inputBuffer += temp;
             }
         }
 
@@ -66,7 +68,7 @@ namespace TCP
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine("CRASH : " + e.Message);
                 }
                 finally
                 {
@@ -83,7 +85,7 @@ namespace TCP
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.ToString());
+                    Console.WriteLine("CRASH : " + e.ToString());
                 }
             }
         }
@@ -95,7 +97,7 @@ namespace TCP
             String toreturn = "";
             int i;
 
-            while ((i = ns.Read(bytes, 0, bytes.Length)) != 0)
+            if ((i = ns.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                 Console.WriteLine("Received: {0}", data);
@@ -111,7 +113,9 @@ namespace TCP
 
             String[] inputArray = inputBuffer.Split('\n');
 
-            if(inputArray.Length >= 2)
+            if(inputBuffer.Length >= 1)
+
+            if (inputArray.Length >= 2)
             {
                 toreturn = inputArray[0];
                 inputBuffer = "";

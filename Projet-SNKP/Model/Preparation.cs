@@ -13,8 +13,8 @@ namespace Model
     {
         private BDDConnection bddconnection;
 
-        private int id;
-        private String name;
+        public int id;
+        public String name;
         private List<Task> taskList;
         private List<List<Ingredient>> ingredientList;
         private List<List<Tool>> toolList;
@@ -24,26 +24,21 @@ namespace Model
         {
             id = _id;
             bddconnection = _bddconnection;
-            List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
-            name = table.ElementAt(0).ElementAt(1);
+            //List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
+            //name = table.ElementAt(0).ElementAt(1);
 
             initList();
         }
 
         private void initList()
         {
-            List<List<string>> table = bddconnection.executeQuery("SELECT Preparation.IDPreparation,"+
-                                                                  "Preparation.NomPreparation, Necessite.IDTache,"+
-                                                                  "Necessite.OrdreTache, Necessite.IDIngredients,"+
-                                                                  "Tache.NomTache, Tache.DureeTache,"+
-                                                                  "Utilise.IDMateriel, Materiel.NomMateriel,"+
-                                                                  "Materiel.Type, Materiel.EtatMateriel FROM Materiel,"+
-                                                                  "RIGHT JOIN Utilise ON Materiel.IDMateriel = Utilise.IDMateriel"+
-                                                                  "RIGHT JOIN Tache ON Utilise.IDTache = Tache.IDTache"+
-                                                                  "RIGHT JOIN Necessite ON Tache.IDTache = Necessite.IDTache"+
-                                                                  "RIGHT JOIN Preparation ON Necessite.IDPreparation = Preparation.IDPreparation"+
-                                                                  "WHERE Preparation.IDPreparation = " + id +
-                                                                  "ORDER BY Necessite.OrdreTache");
+            List<List<string>> table = bddconnection.executeQuery("SELECT Preparation.IDPreparation, Preparation.NomPreparation, Necessite.IDTache, Necessite.OrdreTache, Necessite.IDIngredients, Tache.NomTache, Tache.DureeTache, Utilise.IDMateriel, Materiel.NomMateriel, Materiel.Type, Materiel.EtatMateriel FROM Materiel " +
+                                                                  "RIGHT JOIN Utilise ON Materiel.IDMateriel = Utilise.IDMateriel " +
+"RIGHT JOIN Tache ON Utilise.IDTache = Tache.IDTache " +
+"RIGHT JOIN Necessite ON Tache.IDTache = Necessite.IDTache " +
+"RIGHT JOIN Preparation ON Necessite.IDPreparation = Preparation.IDPreparation " +
+"WHERE Preparation.IDPreparation = 10 " +
+"ORDER BY Necessite.OrdreTache");
 
             taskList = new List<Task>();
 

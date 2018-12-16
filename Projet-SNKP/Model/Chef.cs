@@ -16,6 +16,8 @@ namespace Model
 
         public Chef(IStrategyChef givenStrategy, BDDConnection bdd_connection) : base(bdd_connection)
         {
+            Console.WriteLine("Le chef vient d'arriver au restaurant");
+
             strategy = givenStrategy;
             this.Thread = new Thread(new ThreadStart(ThreadLoop));
             this.Thread.Start();

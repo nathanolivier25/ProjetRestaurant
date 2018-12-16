@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{630101D9-B4ED-4A90-A481-2564D94D5C7C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>LauncherConsole</RootNamespace>
-    <AssemblyName>LauncherConsole</AssemblyName>
+    <ProjectGuid>{2C559BCA-8A83-4C5A-B0B4-3BAFF8703B7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PropertiesWindow</RootNamespace>
+    <AssemblyName>PropertiesWindow</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -39,15 +39,43 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactoryPeople.cs" />
-    <Compile Include="KitchenLauncher.cs" />
-    <Compile Include="RestaurantLauncher.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowLauncher.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -57,14 +85,6 @@
       <Project>{ca3bdf15-6599-45dc-94b5-dcbc13adc7b7}</Project>
       <Name>BDD</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CuisineController\CuisineController.csproj">
-      <Project>{f537f485-6068-4560-a00f-db34094f5ea9}</Project>
-      <Name>CuisineController</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GUI\GUI.csproj">
-      <Project>{28c3a3d7-74ae-498a-b5a0-5a8aa651c711}</Project>
-      <Name>GUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{88876812-4c9a-462d-a1d3-8745bcfdbdc1}</Project>
       <Name>Interface</Name>
@@ -72,18 +92,6 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8805aa1a-087d-411b-80a8-a5e5f0bc77a8}</Project>
       <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PropertiesWindow\PropertiesWindow.csproj">
-      <Project>{2c559bca-8a83-4c5a-b0b4-3baff8703b7c}</Project>
-      <Name>PropertiesWindow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SalleController\SalleController.csproj">
-      <Project>{d8e41748-91a3-4691-a5bf-9235e3bcb6d2}</Project>
-      <Name>SalleController</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TCP\TCP.csproj">
-      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
-      <Name>TCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -41,16 +41,13 @@ namespace Model
             threadIsRunning = true;
             while (threadIsRunning)
             {
-                if (sendBuffer != null)
+                if (sendBuffer.Count >= 1)
                 {
-                    if (sendBuffer.Count >= 1)
-                    {
-                        connection.write(sendBuffer.ElementAt(0).toString());
-                    }
+                    connection.write(sendBuffer.ElementAt(0).toString());
                 }
 
                 String str = connection.read();
-                if (str.Length > 0)
+                if(str.Length > 0)
                 {
                     inputBuffer.Add(new TransferableItemDecorator(str));
                 }

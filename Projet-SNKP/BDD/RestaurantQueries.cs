@@ -106,10 +106,15 @@ namespace BDD
             return "UPDATE " + table_table_restaurant + " SET IDGroup = " + id_group + " WHERE IDTable = " + id_table;
         }
 
-        public static string getTaskDuration(string task_name)
+        /*public static string getTaskDuration(string task_name)
         {
             return "SELECT DureeTache * 1000 * (SELECT Speed FROM " + table_time_speed + 
                 " WHERE ID = 1) FROM Tache WHERE NomTache = '" + task_name + "';";
+        }*/
+
+        public static string getTaskDuration(string task_name)
+        {
+            return "SELECT DureeTache FROM Tache WHERE NomTache = '" + task_name + "';";
         }
 
         public static string getCommandToTake(int carre)

@@ -58,7 +58,7 @@ namespace TCP
             if(this.mode == Mode.Serveur)
             {
                 TcpListener listener = null;
-                Console.WriteLine("as server");
+                //Console.WriteLine("as server");
                 try
                 {
                     listener = TcpListener.Create(port);
@@ -77,7 +77,7 @@ namespace TCP
             }
             else
             {
-                Console.WriteLine("as client");
+                //Console.WriteLine("as client");
                 try
                 {
                     client = new TcpClient(address, port);

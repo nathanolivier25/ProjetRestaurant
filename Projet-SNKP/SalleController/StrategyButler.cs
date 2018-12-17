@@ -40,7 +40,8 @@ namespace SalleController
 
                 if (!(tableidcheck.Count > 0))
                 {
-                    Console.WriteLine("Pas de table disponible");
+                    this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(id_group, -2));
+                    Console.WriteLine("Le groupe " + id_group + " quitte le restaurant car il n'y a plus de places");
                     return 0;
                 }
                 int id_table = Int32.Parse(tableidcheck.ElementAt(0).ElementAt(0));
@@ -50,13 +51,22 @@ namespace SalleController
 
                 // Set the group table ID
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupTable(id_group, id_table));
+            }
 
-                // Instanciate a new client group
-                /*ClientGroup group_client = new ClientGroup(new StrategyClientGroup(this.bdd_connection), this.bdd_connection);
-                group_client.IDGroup = id_group;
-                group_client.IDTable = id_table;
-                group_client.NbClients = nb_clients;
-                Console.WriteLine("Assignation de la table " + id_table + " au groupe " + id_group);*/
+            List<List<string>> list = this.bdd_connection.executeQuery("SELECT * FROM groupclient WHERE Etat = 7");
+            if(list.Count > 0)
+            {
+                int id_group = int.Parse(list[0][0]);
+                this.bdd_connection.executeQuery(RestaurantQueries.setGroupState(id_group, -1));
+
+                int id_table = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getGroupTable(id_group))[0][0]);
+                this.bdd_connection.executeQuery(RestaurantQueries.setTableFree(id_table));
+
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setTableGroupIDToNull(id_table));
+
+                ConsoleDisplayer.display("Le groupe " + id_group + " paye");
+                Butler.Timer.wait(30);
+                ConsoleDisplayer.display("Le groupe " + id_group + " a quitté le restaurant");
             }
             return 0;
         }

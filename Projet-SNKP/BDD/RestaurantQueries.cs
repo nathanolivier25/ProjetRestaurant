@@ -31,6 +31,11 @@ namespace BDD
             return "SELECT Etat FROM " + table_group_client + " WHERE IDGroupe = " + id_group;
         }
 
+        public static string getGroupInState(int state)
+        {
+            return "SELECT IDGroupe FROM " + table_group_client + " WHERE Etat = 6";
+        }
+
         public static string setGroupState(int id_group, int state)
         {
             return "UPDATE " + table_group_client + " SET Etat = " + state + " WHERE IDGroupe = " + id_group;
@@ -79,6 +84,12 @@ namespace BDD
                 id_table.ToString() + ";";
         }
 
+        public static string setTableFree(int id_table)
+        {
+            return "UPDATE " + table_table_restaurant + " SET EtatTable = 0 WHERE IDTable = " +
+                id_table.ToString() + ";";
+        }
+
         public static string setGroupTable(int id_group, int id_table)
         {
             return "UPDATE " + table_group_client + " SET IDTable = " + id_table + " WHERE IDGroupe = " + id_group;
@@ -104,6 +115,11 @@ namespace BDD
         public static string setTableGroupID(int id_table, int id_group)
         {
             return "UPDATE " + table_table_restaurant + " SET IDGroup = " + id_group + " WHERE IDTable = " + id_table;
+        }
+
+        public static string setTableGroupIDToNull(int id_table)
+        {
+            return "UPDATE " + table_table_restaurant + " SET IDGroup = NULL WHERE IDTable = " + id_table;
         }
 
         /*public static string getTaskDuration(string task_name)
@@ -134,6 +150,11 @@ namespace BDD
             return "SELECT NumeroCommande FROM " + table_commande + " WHERE StatutCommande = 0;";
         }
 
+        public static string setCommandIDToOrdered(int id_command)
+        {
+            return "UPDATE " + table_commande + " SET StatutCommande = 1 WHERE NumeroCommande = " + id_command;
+        }
+
         public static string getPreparations()
         {
             return "SELECT * FROM " + table_preparations;
@@ -155,6 +176,13 @@ namespace BDD
         {
             return "INSERT INTO " + table_ligne_command + "(IDPreparation, NumeroCommande, QuantiteRecette, CategorieRecette) VALUES(" +
                 id_preparation + ", " + id_command + ", 1, 3);";
+        }
+
+        public static string getGroupIDPreparations(int id_group)
+        {
+            return "SELECT IDPreparation FROM " + table_ligne_command + " WHERE Etat = 0 AND NumeroCommande = " +
+                "(SELECT NumeroCommande FROM " + table_commande + " WHERE IDTable = (SELECT IDTable FROM " + table_group_client + 
+                " WHERE IDGroupe = " + id_group + ") AND StatutCommande = 1); ";
         }
     }
 }

@@ -100,7 +100,7 @@ namespace TCP
             if ((i = ns.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                Console.WriteLine("Received: {0}", data);
+                //Console.WriteLine("Received: {0}", data);
                 toreturn += data;
             }
             return toreturn;
@@ -136,7 +136,7 @@ namespace TCP
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
 
             ns.Write(msg, 0, msg.Length);
-            Console.WriteLine("Sent: {0}", data);
+            //Console.WriteLine("Sent: {0}", data);
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

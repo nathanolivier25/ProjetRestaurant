@@ -15,7 +15,6 @@ namespace Model
         {
             name = _name;
             id = _id;
-
         }
 
 

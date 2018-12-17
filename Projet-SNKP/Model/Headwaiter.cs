@@ -14,8 +14,9 @@ namespace Model
         IStrategyHeadWaiter strategy;
         private int carre = 0;
         private List<int> id_tables = null;
+        private static ExchangerDesk exchanger_desk = null;
 
-        public HeadWaiter(IStrategyHeadWaiter givenStrategy, BDDConnection bdd_connection, ExchangerDesk exchanger_desk, int carre)
+        public HeadWaiter(IStrategyHeadWaiter givenStrategy, BDDConnection bdd_connection, int carre)
             : base(bdd_connection)
         {
             strategy = givenStrategy;
@@ -31,6 +32,12 @@ namespace Model
             {
                 strategy.RoleStrategy();
             }
+        }
+
+        public static ExchangerDesk ExchangerDesk
+        {
+            get { return exchanger_desk; }
+            set { exchanger_desk = value; }
         }
     }
 }

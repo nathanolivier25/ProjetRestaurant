@@ -50,6 +50,7 @@ namespace SalleController
                     // Choose the menu for each customer
                     Random random = new Random();
                     sleep_time = int.Parse(this.bdd_connection.executeQuery(RestaurantQueries.getTaskDuration("Command"))[0][0]);
+                    this.bdd_connection.executeNonQuery(RestaurantQueries.setCommandIDToOrdered(id_command));
                     int id_preparation = 0;
                     for (int i = 0; i < nb_clients; i++)
                     {

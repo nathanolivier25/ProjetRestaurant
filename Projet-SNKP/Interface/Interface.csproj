@@ -103,5 +103,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TCP\TCP.csproj">
+      <Project>{37dee742-1c69-4b90-9f67-8d77f32de9b5}</Project>
+      <Name>TCP</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

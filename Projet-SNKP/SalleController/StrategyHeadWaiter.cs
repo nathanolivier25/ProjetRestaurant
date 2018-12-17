@@ -14,7 +14,7 @@ namespace SalleController
     public class StrategyHeadWaiter : IStrategyHeadWaiter
     {
         private BDDConnection bdd_connection = null;
-        private List<int> list_tables = null;
+        private ExchangerDesk exchanger_desk = null;
         private int carre = 0;
 
         public StrategyHeadWaiter()
@@ -72,6 +72,12 @@ namespace SalleController
                     Thread.Sleep(100);
                 }
                 Console.WriteLine("Le chef de rang apporte la commande au comptoir");
+                List<List<string>> list_ligne_commande = this.bdd_connection.executeQuery(
+                    RestaurantQueries.getGroupIDPreparations(id_group));
+                for(int i = 0; i < list_ligne_commande.Count; i++)
+                {
+                    HeadWaiter.ExchangerDesk.AddToDesk(new TransferableItemDecorator(int.Parse(list_ligne_commande[i][0]), TransferableItemDecorator.Type.Preparation));
+                }
             }
         }
 
@@ -79,6 +85,12 @@ namespace SalleController
         {
             get { return this.carre; }
             set { this.carre = value; }
+        }
+
+        public ExchangerDesk ExchangerDesk
+        {
+            get { return this.exchanger_desk; }
+            set { this.exchanger_desk = value; }
         }
     }
 }

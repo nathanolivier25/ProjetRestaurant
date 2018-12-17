@@ -20,22 +20,12 @@ namespace SalleController
 
         public override void RoleStrategy()
         {
-            // Check for group to place
-            //List<List<string>> list_group_to_place = this.bdd_connection.executeQuery(RestaurantQueries.getCustomersToPlace());
-
-            /*if (list_group_to_place.Count > 0)
+            List<List<string>> list_clients = this.bdd_connection.executeQuery(RestaurantQueries.getGroupInState(6));
+            if(list_clients.Count > 0)
             {
-                try
-                {
-                    int id_group = int.Parse(list_group_to_place[0][0]);
-                    int id_table = int.Parse(list_group_to_place[0][1]);
-                    this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToUnavailable(id_group));
-                    this.bdd_connection.executeNonQuery(RestaurantQueries.setTableGroupID(id_table, id_group));
-                    this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupStateToInstalled(id_group));
-                    Console.WriteLine("Installation du groupe " + id_group.ToString() + " à la table " + id_table.ToString());
-                }
-                catch (FormatException) { }
-            }*/
+                ConsoleDisplayer.display("Le serveur apporte du pain et de l'eau au groupe " + list_clients[0][0]);
+                this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(int.Parse(list_clients[0][0]), 7));
+            }
         }
     }
 }

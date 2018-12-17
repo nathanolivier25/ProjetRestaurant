@@ -24,8 +24,8 @@ namespace Model
         {
             id = _id;
             bddconnection = _bddconnection;
-            //List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
-            //name = table.ElementAt(0).ElementAt(1);
+            List<List<string>> table = bddconnection.executeQuery("SELECT * FROM Preparation WHERE IDPreparation = " + _id);
+            name = table.ElementAt(0).ElementAt(1);
 
             initList();
         }
@@ -37,7 +37,7 @@ namespace Model
 "RIGHT JOIN Tache ON Utilise.IDTache = Tache.IDTache " +
 "RIGHT JOIN Necessite ON Tache.IDTache = Necessite.IDTache " +
 "RIGHT JOIN Preparation ON Necessite.IDPreparation = Preparation.IDPreparation " +
-"WHERE Preparation.IDPreparation = 10 " +
+"WHERE Preparation.IDPreparation = " + id + " " +
 "ORDER BY Necessite.OrdreTache");
 
             taskList = new List<Task>();
@@ -68,7 +68,8 @@ namespace Model
 
                     for(int j=0; j < ingredients.Length; j++)
                     {
-                        temp.Add(new Ingredient(Int32.Parse(ingredients[j]), ""));
+                        List<List<String>> temptable = bddconnection.executeQuery("SELECT * FROM Ingredient WHERE IDIngredient = " + Int32.Parse(ingredients[j]));
+                        temp.Add(new Ingredient(Int32.Parse(ingredients[j]), temptable.ElementAt(0).ElementAt(2)));
                     }
 
                     ingredientList.Add(temp);
@@ -82,12 +83,12 @@ namespace Model
                 if (lasttaskorder != Int32.Parse(table.ElementAt(i).ElementAt(3)))
                 {
                     List<Tool> tools = new List<Tool>();
-                    tools.Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7))));
+                    tools.Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7)),bddconnection));
                     toolList.Add(tools);
                 }
                 else
                 {
-                    toolList.ElementAt(toolList.Count - 1).Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7))));
+                    toolList.ElementAt(toolList.Count - 1).Add(new Tool(Int32.Parse(table.ElementAt(i).ElementAt(7)),bddconnection));
                 }
 
             }

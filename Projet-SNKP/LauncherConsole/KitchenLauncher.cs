@@ -40,13 +40,13 @@ namespace Launcher
             this.chef = new Chef(new StrategyChef(this.bdd_connection, this.desk), this.bdd_connection);
 
             this.cooker1 = new Cooker(new StrategyCooker(this.bdd_connection, this.chef, this.desk), this.bdd_connection);
-            //this.cooker2 = new Cooker(new StrategyCooker(this.bdd_connection, this.chef, this.desk), this.bdd_connection);
+            this.cooker2 = new Cooker(new StrategyCooker(this.bdd_connection, this.chef, this.desk), this.bdd_connection);
 
             List<People> persons = new List<People>();
 
             persons.Add(chef);
-            //persons.Add(cooker1);
-            //persons.Add(cooker2);
+            persons.Add(cooker1);
+            persons.Add(cooker2);
 
             snkpgui = new SnkpGUI(false, persons);
             snkpgui.run();
@@ -70,11 +70,13 @@ namespace Launcher
             while (true)
             {
                 int clock = Interface.Timer.getInstance().getLocalTime();
-                while (clock + 10 > Interface.Timer.getInstance().getLocalTime())
+                while (clock + 180 > Interface.Timer.getInstance().getLocalTime())
                 {
                     Thread.Sleep(50);
                 }
                 this.tempCuisine.write("p12");
+                this.tempCuisine.write("p13");
+                this.tempCuisine.write("p14");
             }
         }
 

@@ -50,6 +50,8 @@ namespace GUI
 
 
             AddTexture("ressources/cuisine/background.png");
+            AddTexture("ressources/cuisine/cuisinier.png");
+            AddTexture("ressources/cuisine/chef.png");
 
 
             AddFont("ressources/malgunbd.ttf");

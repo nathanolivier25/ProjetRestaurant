@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using Model;
 
 namespace CuisineController
@@ -12,7 +13,7 @@ namespace CuisineController
     public class StrategyChef : IStrategyChef
     {
         private BDDConnection bdd_connection = null;
-        private List<Preparation> myOrderList;
+        public List<Preparation> myOrderList;
         private ExchangerDesk exchangerDesk;
         
 
@@ -49,19 +50,25 @@ namespace CuisineController
             Console.WriteLine("communication:" + NumeroPreparation);
             this.myOrderList.Add(new Preparation(NumeroPreparation, bdd_connection)); // stock la liste des préparation
             */
+
             List<TransferableItemDecorator> temp = exchangerDesk.CheckDesk();
 
             if(temp.Count > 0)
             {
-                Preparation tempPreparation = new Preparation(temp.ElementAt(0).getId(), this.bdd_connection);
-                this.myOrderList.Add(tempPreparation);
-                exchangerDesk.RemoveFromDesk(0);
-                Console.WriteLine("Reception de la commande de : " + tempPreparation.name + " n°" + tempPreparation.id);
+                TransferableItemDecorator secure = temp.ElementAt(0);
+                if (secure != null)
+                {
+                    Preparation tempPreparation = new Preparation(secure.getId(), this.bdd_connection);
+                    Console.WriteLine("Reception par le CHEF de la commande de : " + tempPreparation.name + " n°" + tempPreparation.id);
+                    exchangerDesk.RemoveFromDesk(0);
+                    this.myOrderList.Add(tempPreparation);
+                }
             }
 
 
         }
-        
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public override IPreparation attributTask() // va permettre de donner la liste au cuisinier
         {
             if (myOrderList.Count ==0)
@@ -73,7 +80,7 @@ namespace CuisineController
                 Preparation LigneCommande = myOrderList.ElementAt(0);
                 myOrderList.RemoveAt(0);
 
-                Console.WriteLine("Attribution de la commande :" + LigneCommande.name + " n°" + LigneCommande.id);
+                Console.WriteLine("Attribution par le CHEF de la commande :" + LigneCommande.name + " n°" + LigneCommande.id);
 
                 return LigneCommande;
             }

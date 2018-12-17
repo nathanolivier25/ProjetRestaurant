@@ -22,30 +22,22 @@ namespace Interface
 
         public TransferableItemDecorator(String str)
          {
-            //Console.WriteLine("received str :"+str+":");
             char c = str.ElementAt(0);
-            try
-            {
-                int i = Int32.Parse(str.Substring(1));
+            int i = Int32.Parse(str.Substring(1));
 
-                if (c == 'p')
-                {
-                    type = Type.Preparation;
-                    id = i;
-                }
-                else if (c == 't')
-                {
-                    type = Type.Tool;
-                    id = i;
-                }
-                else
-                {
-                    Console.WriteLine("TRANSFERABLE ITEM PARSING FAILURE");
-                }
-            }
-            catch (FormatException)
+            if(c == 'p')
             {
-                Console.WriteLine("Format de données incorrect");
+                type = Type.Preparation;
+                id = i;
+            }
+            else if(c == 't')
+            {
+                type = Type.Tool;
+                id = i;
+            }
+            else
+            {
+                Console.WriteLine("TRANSFERABLE ITEM PARSING FAILURE");
             }
 
         }

@@ -10,8 +10,8 @@ namespace Launcher
     {
         static void Main(string[] args)
         {
-            Thread thread_kitchen = new Thread(new ThreadStart(ThreadKitchen));
-            thread_kitchen.Start();
+            /*Thread thread_kitchen = new Thread(new ThreadStart(ThreadKitchen));
+            thread_kitchen.Start();*/
             new RestaurantLauncher();
         }
 

@@ -73,12 +73,12 @@ namespace SalleController
                     //Thread.Sleep(100);
                 }
                 ConsoleDisplayer.display("Le chef de rang apporte la commande au comptoir");
-                List<List<string>> list_ligne_commande = this.bdd_connection.executeQuery(
+                /*List<List<string>> list_ligne_commande = this.bdd_connection.executeQuery(
                     RestaurantQueries.getGroupIDPreparations(id_group));
                 for(int i = 0; i < list_ligne_commande[0].Count; i++)
                 {
                     HeadWaiter.ExchangerDesk.AddToDesk(new TransferableItemDecorator(int.Parse(list_ligne_commande[i][0]), TransferableItemDecorator.Type.Preparation));
-                }
+                }*/
             }
         }
 

@@ -53,7 +53,7 @@ namespace SalleController
                 this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupTable(id_group, id_table));
             }
 
-            List<List<string>> list = this.bdd_connection.executeQuery("SELECT * FROM groupclient WHERE Etat = 7");
+            List<List<string>> list = this.bdd_connection.executeQuery("SELECT * FROM groupclient WHERE Etat = 8");
             if(list.Count > 0)
             {
                 int id_group = int.Parse(list[0][0]);

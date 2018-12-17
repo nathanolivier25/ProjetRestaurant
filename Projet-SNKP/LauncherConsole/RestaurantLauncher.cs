@@ -52,8 +52,8 @@ namespace Launcher
         public void startPeople()
         {
             // Instanciate
-            /*Thread thread = new Thread(new ThreadStart(TCPConnect));
-            thread.Start();*/
+            Thread thread = new Thread(new ThreadStart(TCPConnect));
+            thread.Start();
 
             ExchangerDesk exchanger_desk = new ExchangerDesk(new TCP.TCP(TCP.TCP.Mode.Client), Side.Room);
             HeadWaiter.ExchangerDesk = exchanger_desk;

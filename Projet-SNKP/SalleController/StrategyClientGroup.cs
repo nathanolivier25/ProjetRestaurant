@@ -66,6 +66,12 @@ namespace SalleController
                     this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(ID_group, 6));
                     Console.WriteLine("Le groupe " + ID_group + " a validé sa commande");
 
+                    Butler.Timer.wait(600);
+                    ConsoleDisplayer.display("Le serveur apporte les plats au groupe " + ID_group);
+                    Butler.Timer.wait(1200);
+                    ConsoleDisplayer.display("Le groupe " + ID_group + " a terminé de manger");
+                    this.bdd_connection.executeNonQuery(RestaurantQueries.setGroupState(ID_group, 8));
+
                     break;
             }
         }

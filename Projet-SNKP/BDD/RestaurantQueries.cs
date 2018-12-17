@@ -182,7 +182,7 @@ namespace BDD
         {
             return "SELECT IDPreparation FROM " + table_ligne_command + " WHERE Etat = 0 AND NumeroCommande = " +
                 "(SELECT NumeroCommande FROM " + table_commande + " WHERE IDTable = (SELECT IDTable FROM " + table_group_client + 
-                " WHERE IDGroupe = " + id_group + ") AND StatutCommande = 1); ";
+                " WHERE IDGroupe = " + id_group + ") AND StatutCommande = 1);";
         }
     }
 }

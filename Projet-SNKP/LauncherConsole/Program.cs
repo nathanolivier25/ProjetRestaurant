@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Launcher
 {
@@ -10,8 +10,14 @@ namespace Launcher
     {
         static void Main(string[] args)
         {
+            Thread thread_kitchen = new Thread(new ThreadStart(ThreadKitchen));
+            thread_kitchen.Start();
             new RestaurantLauncher();
-            //new KitchenLauncher();
+        }
+
+        static public void ThreadKitchen()
+        {
+            new KitchenLauncher();
         }
     }
 }

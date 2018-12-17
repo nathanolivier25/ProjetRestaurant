@@ -15,7 +15,7 @@ namespace SalleController
 
         public static void display(string message)
         {
-            Console.WriteLine("Message");
+            Console.WriteLine(message);
         }
     }
 }

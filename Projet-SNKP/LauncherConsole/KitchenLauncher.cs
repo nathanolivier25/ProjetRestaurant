@@ -30,10 +30,10 @@ namespace Launcher
         public KitchenLauncher()
         {
 
-            launchTestTCP();
+            //launchTestTCP();
             this.tcp = new TCP.TCP(TCP.TCP.Mode.Serveur, "127.0.0.1");
 
-            this.bdd_connection = new BDDConnection("LAPTOP-N7TCCQGD", "ProgSystem");
+            this.bdd_connection = new BDDConnection("SÉBASTIEN", "ProgSystem");
 
             this.desk = new ExchangerDesk(this.tcp, Side.Kitchen);
 
